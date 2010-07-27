@@ -1,0 +1,20 @@
+--- pkg/usr/bin/syncevo-http-server	2010-06-25 13:49:29.078197820 +0100
++++ pkg/usr/bin/syncevo-http-server.new	2010-06-28 18:46:29.192785732 +0100
+@@ -135,7 +135,7 @@
+         # feed new data into SyncEvolution and wait for reply
+         request.content.seek(0, 0)
+         self.connection.Process(request.content.read(),
+-                                request.getHeader('content-type'))
++                request.getHeader('content-type').replace('; charset=UTF-8', ''))
+         self.request = request
+         SyncMLSession.sessions.append(self)
+ 
+@@ -149,7 +149,7 @@
+         deferred = request.notifyFinish()
+         deferred.addCallback(self.done)
+         self.connection.Process(data,
+-                                request.getHeader('content-type'))
++                request.getHeader('content-type').replace('; charset=UTF-8', ''))
+         self.request = request
+ 
+ class SyncMLPost(resource.Resource):

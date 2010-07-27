@@ -1,0 +1,22 @@
+# Contributor: Tom Vincent <http://www.tlvince.com/>
+
+pkgname=jack_mixer
+pkgver=8
+pkgrel=3
+pkgdesc="A GTK based Jack audio mixer"
+url="http://home.gna.org/jackmixer/"
+arch=('i686' 'x86_64')
+license=('GPL')
+depends=('python-fpconst' 'jack-audio-connection-kit')
+optdepends=('lash: session support'
+            'gnome-python: GConf settings preservation')
+makedepends=('swig')
+source=("http://download.gna.org/jackmixer/$pkgname-$pkgver.tar.gz")
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr
+  make || return 1
+  make DESTDIR=$pkgdir install || return 1
+}
+md5sums=('5c0ae2d8825f326625c3aac2de3f358d')

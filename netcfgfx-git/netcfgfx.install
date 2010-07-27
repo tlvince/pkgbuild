@@ -1,0 +1,17 @@
+post_install() {
+    cat << EOF
+1. Add the line:
+
+    %network ALL=(root) NOPASSWD: /usr/bin/netcfg, /usr/sbin/iwlist, /etc/rc.d/net-auto-wireless, /etc/rc.d/net-auto-wired, /usr/bin/netcfgfx
+
+... to sudoers (with visudo)
+
+2. Add your user to the network group (and logout to apply changes):
+
+    $ gpasswd -a USER network
+
+3. Launch netcfgfx prefixed with sudo:
+
+    $ sudo netcfgfx &
+EOF
+}

@@ -1,0 +1,19 @@
+# Maintainer: Tom Vincent <http://www.tlvince.com/>
+
+pkgname=python-gtkspell
+pkgver=2.25.3
+pkgrel=1
+pkgdesc="Python bindings for the GtkSpell library"
+url="http://packages.debian.org/squeeze/python-gtkspell"
+arch=('i686' 'x86_64')
+license=('GPL')
+depends=('gtkspell')
+source=("http://ftp.debian.org/debian/pool/main/g/gnome-python-extras/gnome-python-extras_$pkgver.orig.tar.gz")
+
+build() {
+  cd $srcdir/gnome-python-extras-$pkgver/
+  ./configure --prefix=/usr --disable-allbindings --enable-gtkspell
+  make || return 1
+  make DESTDIR=$pkgdir install || return 1
+}
+md5sums=('375782d50d42cb1704533ffc42acc5f9')

@@ -1,0 +1,33 @@
+# Contributor: Tom Vincent <http://www.tlvince.com/>
+
+pkgname=netcfgfx-git
+pkgver=20100725
+pkgrel=2
+pkgdesc="A GUI for netcfg2, fork of netcfgGUI"
+arch=('i686' 'x86_64')
+url="http://admiral0.github.com/netcfgfx/"
+license=('GPL')
+depends=('netcfg' 'wireless_tools' 'qt' 'sudo')
+makedepends=('git' 'cmake')
+install=netcfgfx.install
+source=(netcfgfx.desktop)
+_gitroot="git://github.com/admiral0/netcfgfx"
+
+build() {
+  msg "Connecting to GIT server..."
+  if [[ -d $srcdir/$pkgname-$pkgver ]]; then
+     cd $srcdir/$pkgname-$pkgver && git pull origin || return 1
+  else
+    git clone $_gitroot $srcdir/$pkgname-$pkgver || return 1
+    cd $srcdir/$pkgname-$pkgver
+  fi
+  msg "GIT checkout done or server timeout"
+  msg "Starting make..."
+
+  cmake .
+  make
+  install -Dm755 netcfgfx ${pkgdir}/usr/bin/netcfgfx
+  install -Dm644 resources/Network_Connection_Manager.png ${pkgdir}/usr/share/pixmaps/netcfgfx.png
+  install -Dm644 ${startdir}/netcfgfx.desktop ${pkgdir}/usr/share/applications/netcfgfx.desktop
+}
+md5sums=('2e09dc987b2c4b173c1d448452349cb9')

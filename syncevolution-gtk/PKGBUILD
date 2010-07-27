@@ -1,0 +1,43 @@
+# Contributor: Tom Vincent <http://www.tlvince.com/>
+
+pkgname=syncevolution-gtk
+_pkgname=syncevolution
+pkgver=1.0
+pkgrel=2
+pkgdesc="Provides full two-way synchronization for Evolution via SyncML and \
+         Bluetooth without the Evolution/Gnome dependencies."
+arch=('i686' 'x86_64')
+url="http://syncevolution.org/"
+license=('GPL')
+depends=('openobex' 'libsoup' 'libgnome-keyring')
+optdepends=('twisted: for built-in SyncML server support'
+            'python: for built-in SyncML server support'
+            'libnotify: for built-in SyncML server support')
+makedepends=('autoconf' 'boost' 'pkg-config')
+provides=('syncevolution')
+conflicts=('syncevolution' 'syncevolution-git' 'syncevolution-bin')
+source=(http://downloads.syncevolution.org/syncevolution/sources/$_pkgname-$pkgver.tar.gz
+        charset.patch)
+md5sums=('7de626f5839046c47a32336d5dee70d2'
+         '78996d89ea91511fca63b6e4333d5a13')
+
+build() {
+    cd "$srcdir/$_pkgname-$pkgver"
+
+    ./configure --prefix=/usr \
+        --disable-ebook \
+        --disable-ecal \
+        --disable-shared \
+        --enable-dbus-service \
+        || return 1
+    make || return 1
+    make DESTDIR="$pkgdir" install || return 1
+    
+    # http://lists.syncevolution.org/pipermail/syncevolution/2010-June/001597.html
+    cd ${startdir}
+    patch -Np0 -i "charset.patch" || return 1
+
+    ln -s "${pkgdir}/usr/libexec/syncevo-dbus-server" \
+        "${pkgdir}/usr/bin/syncevo-dbus-server"
+}
+
