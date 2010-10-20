@@ -2,7 +2,7 @@
 
 pkgname=python-gtkspell
 pkgver=2.25.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the GtkSpell library"
 url="http://packages.debian.org/squeeze/python-gtkspell"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ source=("http://ftp.debian.org/debian/pool/main/g/gnome-python-extras/gnome-pyth
 
 build() {
   cd $srcdir/gnome-python-extras-$pkgver/
+  export PYTHON="/usr/bin/python2"
   ./configure --prefix=/usr --disable-allbindings --enable-gtkspell
   make || return 1
   make DESTDIR=$pkgdir install || return 1

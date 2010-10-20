@@ -11,3 +11,4 @@ pkg/
 *.tar.gz
 *.tgz
 *.zip
+*.xz
