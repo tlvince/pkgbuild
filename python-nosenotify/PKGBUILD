@@ -8,7 +8,7 @@ pkgdesc="nose plugin for Linux popup notification bubbles"
 url="http://pypi.python.org/pypi/NoseNotify/"
 arch=("i686" "x86_64")
 license=("LGPL")
-depends=("python-nose, python-notify")
+depends=("python-nose" "python-notify")
 source=("http://pypi.python.org/packages/source/N/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=("7d376b169085f04c9d6aee2c9fb4605e")
 
