@@ -1,19 +1,19 @@
 # Maintainer: Tom Vincent <http://www.tlvince.com/contact/>
 
-pkgname=python-nosenotify
-_pkgname=NoseNotify
-pkgver=0.1.8
-pkgrel=1
+pkgname="python-nosenotify"
+_pkgname="NoseNotify"
+pkgver="0.1.8"
+pkgrel="1"
 pkgdesc="nose plugin for Linux popup notification bubbles"
 url="http://pypi.python.org/pypi/NoseNotify/"
-arch=('i686' 'x86_64')
-license=('LGPL')
-depends=('python-nose')
-source=('http://pypi.python.org/packages/source/N/$_pkgname/$_pkgname-$pgkver.tar.gz')
-md5sums=('9f3b7ec5c57130b96061cb486b79c076')
+arch=("i686" "x86_64")
+license=("LGPL")
+depends=("python-nose, python-notify")
+source=("http://pypi.python.org/packages/source/N/$_pkgname/$_pkgname-$pkgver.tar.gz")
+md5sums=("7d376b169085f04c9d6aee2c9fb4605e")
 
 build()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$_pkgname-$pkgver"
     python2 setup.py install --root=$pkgdir
 }
