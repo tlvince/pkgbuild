@@ -9,6 +9,8 @@ url='http://www.mutt.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('gpgme' 'ncurses' 'libidn')
+conflicts=('mutt')
+provides=('mutt')
 source=("ftp://ftp.mutt.org/mutt/devel/mutt-${pkgver}.tar.gz"
         "patch-${pkgver}-r1.vk.pgp_verbose_mime"
         "mutt-attach.patch")
