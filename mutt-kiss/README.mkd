@@ -1,0 +1,12 @@
+Mutt KISS
+=========
+
+This `mutt` "Keep It Simple Stupid" package disables built-in fetching and
+sending of mails (over POP3/IMAP/SMTP), returning to the true MUA approach.
+
+Instead, try using [offlineimap][1] to fetch and [msmtp][2] to send mail.
+Patrick Brisbin has an [awesome tutorial][3] to make the set up easier.
+
+  [1]: http://offlineimap.org/
+  [2]: http://msmtp.sourceforge.net/
+  [3]: http://pbrisbin.com/posts/mutt_gmail_offlineimap
