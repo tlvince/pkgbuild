@@ -3,7 +3,7 @@
 
 pkgname=mutt-kiss
 pkgver=1.5.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Mutt sans POP/IMAP/SMTP/SSL, with attachment patches'
 url='http://www.mutt.org/'
 license=('GPL')
@@ -31,6 +31,7 @@ build() {
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--enable-gpgme \
+        --enable-hcache \
 		--with-curses=/usr \
 		--with-regex \
 		--with-idn \
