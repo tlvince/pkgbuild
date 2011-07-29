@@ -9,7 +9,7 @@ url="https://launchpad.net/pycclib"
 license=('Apache')
 depends=('python2' 'python2-httplib2')
 options=(!emptydirs)
-source=("http://launchpad.net/$_pkgname/trunk/$_pgkver/+download/$_pkgname-$pkgver.tar.gz")
+source=("http://launchpad.net/$_pkgname/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz")
 md5sums=(0f440d57ce10cab567b69e76bc9d11b1)
 
 package() {
