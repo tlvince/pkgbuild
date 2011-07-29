@@ -8,9 +8,9 @@ pkgdesc="cloudControl command line utilities"
 arch=(any)
 url="https://launchpad.net/cctrl"
 license=('Apache')
-depends=('python2' 'python2-argparse' 'python-paramiko' 'python2-pycclib')
+depends=('python2' 'python-paramiko' 'python2-pycclib')
 options=(!emptydirs)
-source=("http://launchpad.net/$_pkgname/trunk/$_pgkver/+download/$_pkgname-$pkgver.tar.gz")
+source=("http://launchpad.net/$_pkgname/trunk/$_pkgver/+download/$_pkgname-$pkgver.tar.gz")
 md5sums=(816a08d28b1fb2f41f1c6e711592e04a)
 
 package() {
