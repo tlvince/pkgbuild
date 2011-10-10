@@ -2,7 +2,7 @@
 # Contributor: Martin Ellis <ellism88@gmail.com>
 
 pkgname=kroc_svn
-pkgver=7216
+pkgver=7239
 pkgrel=1
 pkgdesc="Kent Retargetable occam Compiler. An occam-pi compiler."
 arch=('i686')
@@ -13,7 +13,8 @@ depends=('libv4l' 'bash' 'binutils' 'gawk' 'pkgconfig' 'libpng' 'libxmu' 'libxi'
 makedepends=('subversion')
 optdepends=('sdl' 'sdl_sound' 'mesa')
 provides=("kroc" "kroc-setup.sh" "occ21")
-md5sums=()
+md5sums=(eb6839a64ac4a5303d333276eaf48ce0)
+source=(arch.diff)
 
 _svntrunk="http://projects.cs.kent.ac.uk/projects/kroc/svn/kroc/trunk/"
 _svnmod="svnmod"
@@ -36,7 +37,12 @@ build() {
   cd "$srcdir/$_svnmod-build"
 
   export PYTHON="python2"
-  find -not -iwholename "*.svn*" -type f -exec sed -i -e 's/env python/&2/' -e 's_/bin/python_&2_' -e 's/PYTHON=python/&2/' '{}' ';'
+  find -not -iwholename "*.svn*" -type f -exec sed -i -e 's/env python/&2/' \
+    -e 's_/bin/python_&2_' -e 's/PYTHON=python/&2/' '{}' ';'
+
+  sed -i 's_python__' runtime/ccsp/include/Makefile.am
+  patch -p0 -i ../../arch.diff
+
   autoreconf -vfi
   ./configure --prefix=/usr
   make
