@@ -1,6 +1,5 @@
 # Maintainer: Tom Vincent <http://tlvince.com/contact/>
 pkgname=python2-quvi-git
-_pkgname=quvi
 pkgver=20111119
 pkgrel=1
 pkgdesc="LibQuvi wrapper for Python"
@@ -12,7 +11,7 @@ makedepends=('git')
 options=(!emptydirs)
 
 _gitroot=git://github.com/metal3d/python-quvi.git
-_gitname=$_pkgname
+_gitname=$pkgname
 
 build() {
   cd "$srcdir"
@@ -23,16 +22,16 @@ build() {
     msg "The local files are updated."
   else
     git clone "$_gitroot" "$_gitname"
+    # Until quvi 0.4 fixes are merged into master
+    cd "$_gitname"
+    git checkout -b dev origin/developpement
   fi
-
-  # Until quvi 0.4 fixes are merged into master
-  git checkout -b dev origin/developpement
 
   msg "GIT checkout done or server timeout"
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
