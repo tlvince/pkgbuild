@@ -1,7 +1,7 @@
 # Maintainer: Tom Vincent <http://tlvince.com/contact/>
 pkgname=python2-pycclib
 _pkgname=pycclib
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Python library for the cloudControl API"
 arch=(any)
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python2' 'python2-httplib2')
 options=(!emptydirs)
 source=("http://launchpad.net/$_pkgname/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz")
-md5sums=(0f440d57ce10cab567b69e76bc9d11b1)
+md5sums=(8afc82616b822b4e5c26180378a88c04)
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
