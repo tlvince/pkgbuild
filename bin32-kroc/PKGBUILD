@@ -10,10 +10,10 @@ arch=('x86_64')
 url="http://projects.cs.kent.ac.uk/projects/kroc/trac/wiki"
 license=('GPL')
 groups=()
-depends=('lib32-v4l-utils' 'bash' 'binutils' 'gawk' 'pkgconfig' 'lib32-libpng' \
+depends=('lib32-v4l-utils' 'bash' 'gawk' 'pkgconfig' 'lib32-libpng' \
          'lib32-libxmu' 'lib32-libxi' 'perl' 'python2' 'lib32-libxslt' \
-         'lib32-libgl' 'lib32-freeglut')
-makedepends=('subversion' 'gcc-multilib')
+         'lib32-libgl' 'lib32-freeglut' 'gcc-multilib')
+makedepends=('subversion')
 optdepends=('sdl' 'sdl_sound' 'mesa')
 provides=("kroc" "kroc-setup.sh" "occ21")
 conflicts=($_pkgname32)
