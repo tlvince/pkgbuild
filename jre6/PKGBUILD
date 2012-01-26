@@ -1,10 +1,11 @@
-# Maintainer: Dan Serban
-# Contributors: Guillaume ALAUX, Daniel J Griffiths, Jason Chu, Geoffroy Carrier, Thomas Dziedzic
+# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Contributors: Guillaume ALAUX, Daniel J Griffiths, Jason Chu, 
+#               Geoffroy Carrier, Thomas Dziedzic, Dan Serban
 
 pkgname=jre6
 pkgver=6
 pkgrel=1
-pkgdesc="Java 6 Runtime Environment"
+pkgdesc="Oracle JRE6 (installs to /opt/java6 and does not set JAVA_HOME)"
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
 arch=(i686 x86_64)
 license=(custom)
