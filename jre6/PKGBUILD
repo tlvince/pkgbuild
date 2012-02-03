@@ -11,8 +11,8 @@ arch=(i686 x86_64)
 license=(custom)
 depends=(glibc libxtst)
 makedepends=(lynx)
-provides=('java-runtime=6' j2re)
-conflicts=(java-runtime j2re jre)
+provides=(jre j2re)
+conflicts=(j2re jre)
 replaces=(j2re)
 install=jre.install
 _arch=i586
