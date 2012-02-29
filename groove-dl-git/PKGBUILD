@@ -1,49 +1,61 @@
 # Maintainer: archtux <antonio.arias99999 at gmail.com>
-
+# Contributor: Tom Vincent <http://tlvince.com/contact/>
 pkgname=groove-dl-git
-pkgver=20111127
+_pkgname=groove-dl
+pkgver=20120229
 pkgrel=1
 pkgdesc="A Grooveshark song downloader in Python"
+arch=(any)
 url="https://github.com/jacktheripper51/groove-dl"
-arch='any'
-license='GPL3'
-depends=('python2' 'python2-objectlistview' 'wxpython')
+license=('GPL3')
+depends=('python2')
 makedepends=('git')
+optdepends=('python2-objectlistview' 'wxpython')
+source=(cli.patch)
+md5sums=('d27fbdb96c8d23e2db26e6f534db07d8')
+options=(!emptydirs)
 
-_gitroot="https://github.com/jacktheripper51"
+_gitroot="git://github.com/jacktheripper51"
 _gitname="groove-dl.git"
 
+# Install optdepends and change to true
+gui=false
 
 build() {
-   cd $srcdir
-   msg "Connecting to GIT server...."
+  cd $srcdir
+  msg "Connecting to GIT server...."
 
-   if [ -d $srcdir/$_gitname ] ; then
-  	cd $_gitname && git pull origin
+  if [ -d $srcdir/$_pkgname ] ; then
+    cd $_pkgname && git pull origin
   	msg "The local files are updated."
-   else
+  else
   	git clone $_gitroot/$_gitname
-   fi
+  fi
 
-   msg "GIT checkout done or server timeout"
-   msg "Starting make..."
-
-   cp -r ${srcdir}/groove-dl ${srcdir}/$_gitname-build
-
-   cd groove-dl/python
-
-   # Fix gui.py
-   sed -i '/MessageBox/d' gui.py
-
-   install -d $pkgdir/usr/share/groove-dl
-   chmod 755 -R $pkgdir/usr/share/groove-dl
-   cp * $pkgdir/usr/share/groove-dl
-
-   # Desktop icon
-   install -Dm644 ../misc/groove.ico $pkgdir/usr/share/pixmaps/groove.ico
-   cd $startdir
-   install -Dm644 groove-dl.desktop $pkgdir/usr/share/applications/groove-dl.desktop  
-
-   # Executable
-   install -Dm755 groove-dl $pkgdir/usr/bin/groove-dl
+  msg "GIT checkout done or server timeout"
 }
+
+package() {
+  cd "$srcdir/$_pkgname/python"
+
+  if $gui; then
+    # Fix gui.py
+    sed -i '/MessageBox/d' gui.py
+
+    install -d $pkgdir/usr/share/groove-dl
+    chmod 755 -R $pkgdir/usr/share/groove-dl
+    cp * $pkgdir/usr/share/groove-dl
+
+    # Desktop icon
+    install -Dm644 ../misc/groove.ico $pkgdir/usr/share/pixmaps/groove.ico
+    cd $startdir
+    install -Dm644 groove-dl.desktop $pkgdir/usr/share/applications/groove-dl.desktop
+  else
+    patch < "$startdir/cli.patch"
+  fi
+
+  # Executable
+  install -Dm755 groove.py $pkgdir/usr/bin/groove-dl
+}
+
+# vim:set ts=2 sw=2 et:

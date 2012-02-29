@@ -1,0 +1,19 @@
+--- groove.py	2012-02-29 00:59:57.424975969 +0000
++++ groove.py-new	2012-02-29 01:00:59.834637868 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import httplib
+ import StringIO
+ import hashlib
+@@ -120,10 +120,7 @@
+ 
+ if __name__ == "__main__":
+     if len(sys.argv) < 2:
+-        import gui
+-        gui.main()
+         exit()
+-    print entrystring
+     init()
+     getToken()
+     m = 0
