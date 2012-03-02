@@ -12,8 +12,7 @@ depends=('python2' 'pypcap-svn' 'python2-libquvi-git')
 makedepends=('git' 'svn')
 source=('sniffy.d' 'sniffy.d.conf')
 install='sniffy.install'
-md5sums=('41a112af1c0d3e6e926b76bcd92e9f3d' '4ab9c9a1f21660d81b6da46e69ecff0e'
-         '90dc22e31764f516d46a057b8bc86811')
+md5sums=('41a112af1c0d3e6e926b76bcd92e9f3d' '4ab9c9a1f21660d81b6da46e69ecff0e')
 options=(!emptydirs)
 
 _gitroot=git://github.com/tlvince/sniffy.git
