@@ -8,3 +8,6 @@ Daemon configuration can be found in "/etc/conf.d/sniffy".
 EOF
 }
 
+post_upgrade() {
+    post_install
+}
