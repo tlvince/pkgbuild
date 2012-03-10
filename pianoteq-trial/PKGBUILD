@@ -1,0 +1,46 @@
+# NOTE: Doesn't work! Segfaults on start up. Probably needs write permissions?
+
+# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+pkgname=pianoteq-trial
+_pkgname=pianoteq
+pkgver=3.6.8
+pkgrel=1
+pkgdesc="Virtual piano, physically modelled acoustic and electric pianos"
+arch=('i686' 'x86_64')
+url="http://www.pianoteq.com"
+license=('custom')
+makedepends=('unzip')
+source=("LICENSE")
+md5sums=('bac14e1be2b6d5c5af8366b233f502b0')
+
+build() {
+  if test "$CARCH" == x86_64; then
+    file="pianoteq_linux_trial_x64.zip"
+  else
+    file="pianoteq_linux_trial.zip"
+  fi
+
+  path="/try?file="
+  session=$(curl "${url}${path}${file}" | grep -F "noscript" | \
+                                          sed 's/.*"\(.*\)".*/\1/')
+  wget -O"$file" "${url}/${session}"
+
+  cd "$srcdir"
+  unzip "$file"
+}
+
+package() {
+  cd "$srcdir/Pianoteq"
+
+  if test "$CARCH" == x86_64; then
+    bin="Pianoteq_x64"
+  else
+    bin="Pianoteq"
+  fi
+
+  install -D -m755 "$bin" "$pkgdir/usr/bin/pianoteq"
+  install -D -m755 "$bin.so" "$pkgdir/usr/lib/$bin.so"
+  install -D -m644 "$startdir/LICENSE" "$pkgdir/usr/share/lib/$_pkgname/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:
