@@ -38,8 +38,8 @@ package() {
     bin="Pianoteq"
   fi
 
-  install -D -m755 "$bin" "$pkgdir/usr/bin/pianoteq"
-  install -D -m755 "$bin.so" "$pkgdir/usr/lib/$bin.so"
+  install -D -m755 "$bin" "$pkgdir/usr/bin/$_pkgname"
+  install -D -m755 "$bin.so" "$pkgdir/usr/lib/vst/$_pkgname.so"
   install -D -m644 "$startdir/LICENSE" "$pkgdir/usr/share/lib/$_pkgname/LICENSE"
 }
 
