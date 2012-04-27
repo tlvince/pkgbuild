@@ -1,0 +1,6 @@
+# PKGBUILD
+
+A collection of Arch Linux PKGBUILD's, some of which I [maintain on AUR][1].
+
+  [1]: https://aur.archlinux.org/packages.php?K=tlvince&SeB=m
+
