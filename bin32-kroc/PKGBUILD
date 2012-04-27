@@ -3,7 +3,7 @@
 
 _pkgname32=kroc
 pkgname=bin32-$_pkgname32
-pkgver=7282
+pkgver=7304
 pkgrel=1
 pkgdesc="Kent Retargetable occam Compiler. An occam-pi compiler."
 arch=('x86_64')
