@@ -1,0 +1,30 @@
+# Maintainer:  Tom Vincent <http://tlvince.com/contact/>
+
+pkgname=perl-opts
+_pkgname=opts
+pkgver=0.05
+pkgrel=1
+pkgdesc="Simple command line option parser."
+arch=('i686' 'x86_64')
+url="http://search.cpan.org/~mikihoshi/opts-0.05/"
+license=('GPL' 'PerlArtistic')
+depends=('perl')
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIKIHOSHI/$_pkgname-$pkgver.tar.gz")
+
+build() {
+  cd $srcdir/$_pkgname-$pkgver
+
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+package() {
+  cd $srcdir/$_pkgname-$pkgver
+
+  make install DESTDIR="${pkgdir}"
+  find ${pkgdir} -name perllocal.pod -delete
+  find ${pkgdir} -name .packlist -delete
+}
+
+md5sums=('49b55e10fc72cddcc146af27d5e74f76')
