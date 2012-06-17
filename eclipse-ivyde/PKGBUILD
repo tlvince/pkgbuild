@@ -10,16 +10,11 @@ arch=('any')
 license=('apache')
 depends=('eclipse')
 makedepends=('unzip')
-source=("http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/${pkgver}/apache-ivyde-${_pkgver}.zip")
-md5sums=('97d6f8ab60a9a20a1fa29d577b12b380')
+source=("http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/${pkgver}/apache-ivyde-${_pkgver}.tar.gz")
+md5sums=('2efd490b6737345fcc6b6f278c0061fd')
 
 build() {
   dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
   mkdir -p $dest
-  unzip -d $dest ${srcdir}/apache-ivyde-${_pkgver}.zip "*.jar"
-
-  # XXX: unzip doesn't have --strip option :(
-  mv $dest/apache-ivyde-${_pkgver}/features $dest
-  mv $dest/apache-ivyde-${_pkgver}/plugins $dest
-  rm -rf $dest/apache-ivyde-${_pkgver}
+  tar --directory $dest --strip-components=1 --wildcards -xzvf ${srcdir}/apache-ivyde-${_pkgver}.tar.gz "*.jar"
 }
