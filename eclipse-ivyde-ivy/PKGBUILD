@@ -3,7 +3,7 @@
 pkgname=eclipse-ivyde-ivy
 pkgver=2.3.0
 _pkgver=${pkgver}.cr120120416000235
-pkgrel=1
+pkgrel=2
 pkgdesc="Ivy feature and bundle for IvyDE"
 url="https://ant.apache.org/ivy/ivyde/"
 arch=('any')
@@ -22,6 +22,8 @@ md5sums=('b68cd6dfeefa7e0ab505d09affb42654'
 package() {
   dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
   mkdir -p $dest/features $dest/plugins
-  install -m 644 $startdir/*feature*.jar $dest/features
-  install -m 644 $startdir/*.jar $dest/plugins
+  install -m 644 $startdir/org.apache.ivy.eclipse.ant.feature_${_pkgver}.jar $dest/features
+  install -m 644 $startdir/org.apache.ivy.feature_${_pkgver}.jar $dest/features
+  install -m 644 $startdir/org.apache.ivy.eclipse.ant_${_pkgver}.jar $dest/plugins
+  install -m 644 $startdir/org.apache.ivy_${_pkgver}.jar $dest/plugins
 }
