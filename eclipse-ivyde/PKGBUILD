@@ -2,6 +2,7 @@
 
 pkgname=eclipse-ivyde
 pkgver=2.2.0.beta1
+_pkgver=${pkgver}-201203282058-RELEASE
 pkgrel=1
 pkgdesc="Eclipse plugin which integrates Apache Ivy's dependency management"
 url="https://ant.apache.org/ivy/ivyde/"
@@ -9,12 +10,16 @@ arch=('any')
 license=('apache')
 depends=('eclipse')
 makedepends=('unzip')
-source=("http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/${pkgver}/apache-ivyde-${pkgver}-201203282058-RELEASE.zip")
+source=("http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/${pkgver}/apache-ivyde-${_pkgver}.zip")
 md5sums=('97d6f8ab60a9a20a1fa29d577b12b380')
 
 build() {
-  _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
-  mkdir -p ${_dest}
-  cd ${_dest}
-  unzip ${srcdir}/apache-ivyde-${pkgver}-201203282058-RELEASE.zip
+  dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  mkdir -p $dest
+  unzip -d $dest ${srcdir}/apache-ivyde-${_pkgver}.zip "*.jar"
+
+  # XXX: unzip doesn't have --strip option :(
+  mv $dest/apache-ivyde-${_pkgver}/features $dest
+  mv $dest/apache-ivyde-${_pkgver}/plugins $dest
+  rm -rf $dest/apache-ivyde-${_pkgver}
 }
