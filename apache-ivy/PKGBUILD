@@ -7,7 +7,7 @@ pkgdesc="The agile dependency manager"
 arch=('i686' 'x86_64')
 url="http://ant.apache.org/ivy/"
 license=('APACHE')
-depends=('apache-ant-devel')
+depends=('apache-ant')
 source=(http://www.eu.apache.org/dist/ant/ivy/${pkgver}/${pkgname}-${pkgver//_/-}-bin.tar.gz ivy-bin)
 
 package() {
