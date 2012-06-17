@@ -8,8 +8,7 @@ pkgdesc="Eclipse plugin which integrates Apache Ivy's dependency management"
 url="https://ant.apache.org/ivy/ivyde/"
 arch=('any')
 license=('apache')
-depends=('eclipse')
-makedepends=('unzip')
+depends=('eclipse' 'eclipse-ivyde-ivy')
 source=("http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/${pkgver}/apache-ivyde-${_pkgver}.tar.gz")
 md5sums=('2efd490b6737345fcc6b6f278c0061fd')
 
