@@ -1,0 +1,19 @@
+# Contributor: Tom Vincent <http://tlvince.com/contact/>
+pkgname=ruby-w3c_validators
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="A Ruby wrapper for the World Wide Web Consortium's online validation
+services."
+arch=('any')
+url="http://code.dunae.ca/w3c_validators/"
+license=(GPL)
+depends=('ruby')
+source=("http://gems.rubyforge.org/gems/w3cvalidators-${pkgver}.gem")
+noextract=("w3cvalidators-${pkgver}.gem")
+
+package() {
+  cd "${srcdir}"
+  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" foreman-$pkgver.gem \
+    -n "$pkgdir/usr/bin"
+}
