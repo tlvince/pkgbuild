@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 depends=('java-runtime')
 install=freenet.install
 source=(http://downloads.freenetproject.org/alpha/installer/${pkgname}07.tar.gz rc.freenet)
-md5sums=('9879b644635d9826ac786256dee8bcb9')
-sha1sums=('3a57e280cdd72bae28c61047e24bd7519da59a5b')
+sha1sums=('3a57e280cdd72bae28c61047e24bd7519da59a5b'
+          'c5b88da1dd39b9b7afaa83ea454fa536ccbd0d9f')
 
 build() {
   msg "Nothing to compile for $pkgname"
