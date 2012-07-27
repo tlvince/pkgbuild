@@ -1,6 +1,5 @@
-# -*- shell-script -*-
-#
 # Contributor: Adrian C. <anrxc..sysphere.org>
+# Contributor: Tom Vincent <http://tlvince.com/contact/>
 
 pkgname=xwrits
 pkgver=2.26
@@ -14,11 +13,13 @@ makedepends=("xproto" "xineramaproto")
 source=("${url}/${pkgname}-${pkgver}.tar.gz")
 md5sums=("3e20a00321e264da2b058432fadcff76")
 
-
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr || return 1
-  make || return 1
-  make DESTDIR="${pkgdir}" install || return 1
+  ./configure --prefix=/usr
+  make
+}
+
+pacakge() {
+  make DESTDIR="${pkgdir}" install
 }
