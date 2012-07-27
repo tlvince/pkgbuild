@@ -1,25 +1,34 @@
 # Contributor: Adrian C. <anrxc..sysphere.org>
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
 
-pkgname=xwrits
+pkgname=xwrits-modern
 pkgver=2.26
 pkgrel=1
-pkgdesc="Xwrits reminds you to take regular wrist breaks, and prevent RSI"
+pkgdesc="Xwrits reminds you to take regular wrist breaks, and prevent RSI. With modern break images."
 arch=("i686" "x86_64")
 url="http://www.lcdf.org/xwrits"
 license=("GPL")
 depends=("libx11" "libxext" "libxinerama")
 makedepends=("xproto" "xineramaproto")
-source=("${url}/${pkgname}-${pkgver}.tar.gz")
-md5sums=("3e20a00321e264da2b058432fadcff76")
+conflicts=("xwrits")
+provides=("xwrits")
+source=("${url}/${pkgname}-${pkgver}.tar.gz"
+        "ready.gif" "rest.gif" "warning.gif")
+md5sums=("3e20a00321e264da2b058432fadcff76"
+         "b89cbbef3750fb7c38ee76187b8b90d2"
+         "a02ffada73023edd47f55a41a3f7f3d1"
+         "f4180b7abd49d978807ab3d793d671ec")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
   ./configure --prefix=/usr
   make
 }
 
-pacakge() {
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  install -Dm644 ready.gif "${pkgdir}/usr/share/xwrits/ready.gif"
+  install -Dm644 rest.gif "${pkgdir}/usr/share/xwrits/rest.gif"
+  install -Dm644 warning.gif "${pkgdir}/usr/share/xwrits/warning.gif"
 }
