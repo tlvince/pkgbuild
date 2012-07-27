@@ -1,0 +1,34 @@
+# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+pkgname=fulcrum-git
+pkgver=20111121
+pkgrel=1
+pkgdesc="An agile project planning tool"
+arch=(any)
+url="http://wholemeal.co.nz/projects/fulcrum.html"
+license=('GPL')
+depends=('ruby-rails' 'ruby-jquery-rails' 'ruby-fastercsv' 'ruby-pg')
+makedepends=('git')
+
+_gitroot=git://github.com/malclocke/fulcrum.git
+_gitname=$pkgname
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
+
+  msg "GIT checkout done or server timeout"
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:
