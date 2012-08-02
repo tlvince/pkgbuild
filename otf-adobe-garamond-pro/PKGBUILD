@@ -1,0 +1,17 @@
+# Contributor: Tom Vincent <http://tlvince.com/contact/>
+
+pkgname=otf-adobe-garamond-pro
+pkgver=0.1
+pkgrel=1
+pkgdesc='Adobe Garamond Pro font in Open Type Format'
+arch=('any')
+license=('custom:OFL')
+url='http://www.adobe.com/type/browser/P/P_1703.html'
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+source=("adobe-garamond-pro-regular.otf")
+md5sums=('402c0c3f9ad95557355234c4721de230')
+
+package() {
+	install -d $pkgdir/usr/share/fonts/OTF/
+	install -m644 *.otf $pkgdir/usr/share/fonts/OTF/
+}
