@@ -1,0 +1,18 @@
+# Contributor: Tom Vincent <http://tlvince.com/contact/>
+
+pkgname=otf-gill-sans-std
+pkgver=0.1
+pkgrel=1
+pkgdesc='Gill Sans Standard font in Open Type Format'
+arch=('any')
+license=('custom:OFL')
+url='http://www.adobe.com/type/browser/P/P_1192.html '
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+source=("gill-sans-std.otf")
+md5sums=('3c256200e33b0a45ef0f318b944dbc14')
+install=$pkgname.install
+
+package() {
+	install -d $pkgdir/usr/share/fonts/OTF/
+	install -m644 *.otf $pkgdir/usr/share/fonts/OTF/
+}
