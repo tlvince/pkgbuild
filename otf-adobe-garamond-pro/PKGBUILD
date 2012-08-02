@@ -10,6 +10,7 @@ url='http://www.adobe.com/type/browser/P/P_1703.html'
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 source=("adobe-garamond-pro-regular.otf")
 md5sums=('402c0c3f9ad95557355234c4721de230')
+install=$pkgname.install
 
 package() {
 	install -d $pkgdir/usr/share/fonts/OTF/
