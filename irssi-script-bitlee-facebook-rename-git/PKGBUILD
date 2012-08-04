@@ -1,5 +1,5 @@
 # Maintainer: Tom Vincent <http://tlvince.com/contact/>
-pkgname=irssi-bitlbee-facebook-rename
+pkgname=irssi-script-bitlbee-facebook-rename
 _name=facebook_bitlbee_rename.pl
 pkgver=20120225
 pkgrel=1
