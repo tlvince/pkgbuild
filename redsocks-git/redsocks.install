@@ -1,0 +1,21 @@
+#!/bin/sh
+
+add_redsocks_user() {
+  if ! getent passwd redsocks >/dev/null; then
+    useradd -r -d / -c 'redsocks daemon' -s /sbin/nologin redsocks
+  fi
+}
+
+post_install() {
+  add_redsocks_user
+}
+
+post_upgrade() {
+  add_redsocks_user
+}
+
+post_remove() {
+  if getent passwd redsocks >/dev/null; then
+    userdel redsocks
+  fi
+}
