@@ -1,8 +1,8 @@
 #!/bin/sh
 
 add_redsocks_user() {
-  getent group redsocks &>/dev/null || groupadd -r -g redsocks redsocks >/dev/null
-  getent passwd redsocks &>/dev/null || useradd -r -u redsocks -g redsocks -d / -s /bin/false -c redsocks redsocks >/dev/null
+  getent group redsocks &>/dev/null || groupadd -r redsocks >/dev/null
+  getent passwd redsocks &>/dev/null || useradd -r -g redsocks -d / -s /bin/false -c redsocks redsocks >/dev/null
   systemd-tmpfiles --create redsocks.conf
 }
 
