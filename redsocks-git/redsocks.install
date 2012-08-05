@@ -8,6 +8,18 @@ add_redsocks_user() {
 
 post_install() {
   add_redsocks_user
+  cat << EOF
+To launch redsocks:
+
+1. Start an ssh tunnel on port 4711
+2. Start the redsocks and iptables daemons:
+
+    rc.d start redsocks iptables
+
+3. Load the redsocks iptables rules:
+
+    iptables-restore /etc/iptables/redsocks.rules
+EOF
 }
 
 post_upgrade() {

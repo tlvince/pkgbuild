@@ -15,15 +15,18 @@ conflicts=('redsocks')
 provides=('redsocks')
 install=redsocks.install
 backup=('etc/redsocks.conf'
-        'etc/conf.d/redsocks')
-source=('redsocks.conf'
+        'etc/conf.d/redsocks'
+        'etc/iptables/redsocks.rules')
+source=('redsocks.rc'
+        'redsocks.conf'
         'redsocks.confd'
-        'redsocks.rc'
-        'redsocks.tmpfiles')
-md5sums=('51ae01381791cc6f3f9e8a0fd0f8822c'
+        'redsocks.tmpfiles'
+        'redsocks.rules')
+md5sums=('212704393c4dd515c7c39a611f1c4555'
+         '51ae01381791cc6f3f9e8a0fd0f8822c'
          'ac22995cb50cafd5e2bc2f528fa7d026'
-         '212704393c4dd515c7c39a611f1c4555'
-         '9be5e8bea768b1a8fdec55a8e8af33fd')
+         '9be5e8bea768b1a8fdec55a8e8af33fd'
+         '0b9526c43ea2a2373e333ef5f8cf91e8')
 
 _gitroot='http://github.com/darkk/redsocks.git'
 _gitname=redsocks
@@ -48,6 +51,7 @@ package() {
   install -Dm755 "${srcdir}/redsocks.rc" "${pkgdir}/etc/rc.d/redsocks"
   install -Dm644 "${srcdir}/redsocks.conf" "${pkgdir}/etc/redsocks.conf"
   install -Dm644 "${srcdir}/redsocks.confd" "${pkgdir}/etc/conf.d/redsocks"
+  install -Dm644 "${srcdir}/redsocks.rules" "${pkgdir}/etc/iptables/redsocks.rules"
   install -Dm644 "${srcdir}/redsocks.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/redsocks.conf"
 
   install -Dm755 "${srcdir}/${_gitname}/redsocks" "${pkgdir}/usr/bin/redsocks"
