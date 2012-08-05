@@ -41,6 +41,8 @@ case "$1" in
   stop)
     stat_busy "Stopping redsocks daemon"
     if [[ $PID ]] && kill "$PID" &> /dev/null; then
+      # redsocks doesn't clean up after itself
+      rm -f "$pidfile"
       rm_daemon redsocks
       stat_done
     else
