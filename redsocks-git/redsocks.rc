@@ -54,7 +54,7 @@ case "$1" in
     ;;
   checkconfig)
     # diagnostics will be printed, with zero/non-zero exit
-    /usr/bin/redsocks -t -c "$REDSOCKS_CONFIG"
+    /usr/bin/redsocks -t -c "$REDSOCKS_CONF"
     ;;
   *)
     echo "usage: $0 <start|stop|restart|checkconfig>"
