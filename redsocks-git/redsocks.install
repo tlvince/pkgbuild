@@ -1,9 +1,9 @@
 #!/bin/sh
 
 add_redsocks_user() {
-  if ! getent passwd redsocks >/dev/null; then
-    useradd -r -d / -c 'redsocks daemon' -s /sbin/nologin redsocks
-  fi
+  getent group redsocks &>/dev/null || groupadd -r -g redsocks redsocks >/dev/null
+  getent passwd redsocks &>/dev/null || useradd -r -u redsocks -g redsocks -d / -s /bin/false -c redsocks redsocks >/dev/null
+  systemd-tmpfiles --create redsocks.conf
 }
 
 post_install() {
@@ -15,7 +15,7 @@ post_upgrade() {
 }
 
 post_remove() {
-  if getent passwd redsocks >/dev/null; then
-    userdel redsocks
-  fi
+  getent passwd redsocks &>/dev/null && userdel redsocks >/dev/null
+  getent group redsocks &>/dev/null && groupdel redsocks >/dev/null
+  true
 }
