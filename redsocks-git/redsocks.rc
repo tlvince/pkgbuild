@@ -7,7 +7,7 @@
 checkconfig() {
   local testout
 
-  if ! testout=$(/usr/bin/redsocks -t "$REDSOCKS_CONF" 2>&1); then
+  if ! testout=$(/usr/bin/redsocks -t -c "$REDSOCKS_CONF" 2>&1); then
     echo "$testout"
     return 1
   fi

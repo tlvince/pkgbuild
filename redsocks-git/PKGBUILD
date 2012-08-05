@@ -20,7 +20,7 @@ source=('redsocks.confd'
         'redsocks.rc'
         'redsocks.tmpfiles')
 md5sums=('ac22995cb50cafd5e2bc2f528fa7d026'
-         '0b4025710c2735899b381658a6d3fb84'
+         '45ee188d64a718e35b4f788aeb9a03ac'
          '9be5e8bea768b1a8fdec55a8e8af33fd')
 
 _gitroot='http://github.com/darkk/redsocks.git'
