@@ -16,10 +16,12 @@ provides=('redsocks')
 install=redsocks.install
 backup=('etc/redsocks.conf'
         'etc/conf.d/redsocks')
-source=('redsocks.confd'
+source=('redsocks.conf'
+        'redsocks.confd'
         'redsocks.rc'
         'redsocks.tmpfiles')
-md5sums=('ac22995cb50cafd5e2bc2f528fa7d026'
+md5sums=('51ae01381791cc6f3f9e8a0fd0f8822c'
+         'ac22995cb50cafd5e2bc2f528fa7d026'
          '212704393c4dd515c7c39a611f1c4555'
          '9be5e8bea768b1a8fdec55a8e8af33fd')
 
@@ -44,11 +46,12 @@ build() {
 
 package() {
   install -Dm755 "${srcdir}/redsocks.rc" "${pkgdir}/etc/rc.d/redsocks"
+  install -Dm644 "${srcdir}/redsocks.conf" "${pkgdir}/etc/redsocks.conf"
   install -Dm644 "${srcdir}/redsocks.confd" "${pkgdir}/etc/conf.d/redsocks"
   install -Dm644 "${srcdir}/redsocks.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/redsocks.conf"
 
   install -Dm755 "${srcdir}/${_gitname}/redsocks" "${pkgdir}/usr/bin/redsocks"
   install -Dm644 "${srcdir}/${_gitname}/README" "${pkgdir}/usr/share/doc/redsocks/README"
-  install -Dm644 "${srcdir}/${_gitname}/redsocks.conf.example" "${pkgdir}/etc/redsocks.conf"
+  install -Dm644 "${srcdir}/${_gitname}/redsocks.conf.example" "${pkgdir}/usr/share/doc/redsocks/redsocks.conf.example"
 }
 
