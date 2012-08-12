@@ -3,7 +3,7 @@
 
 pkgname=mutt-kiss
 pkgver=1.5.21
-pkgrel=2
+pkgrel=3
 pkgdesc='Mutt sans POP/IMAP/SMTP/SSL, with attachment patches'
 url='http://www.mutt.org/'
 license=('GPL')
