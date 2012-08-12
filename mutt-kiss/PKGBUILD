@@ -13,10 +13,12 @@ conflicts=('mutt')
 provides=('mutt')
 source=("ftp://ftp.mutt.org/mutt/devel/mutt-${pkgver}.tar.gz"
         "patch-${pkgver}-r1.vk.pgp_verbose_mime"
-        "mutt-attach.patch")
+        "mutt-attach.patch"
+        "patch-1.5.6.dw.confirm-crypt-hook.1")
 sha1sums=('a8475f2618ce5d5d33bff85c0affdf21ab1d76b9'
           '573699f4c4c038b9674714ab7849f9c88aa62059'
-          '94da52d50508d8951aa78ca4b073023414866be1')
+          '94da52d50508d8951aa78ca4b073023414866be1'
+          'd3d40d8994702663042e876f91507c92a759a544')
 
 build() {
     cd "${srcdir}/mutt-${pkgver}"
@@ -26,6 +28,9 @@ build() {
 
     # Forgotten attachment detector
     patch -p1 < ${srcdir}/mutt-attach.patch || return 1
+
+    # http://www.woolridge.ca/mutt/confirm-crypt-hook.html
+    patch -p1 < ${srcdir}/patch-1.5.6.dw.confirm-crypt-hook.1
 
     ./configure \
         --prefix=/usr \
