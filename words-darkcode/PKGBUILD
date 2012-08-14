@@ -1,0 +1,19 @@
+# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+
+pkgname=words-darkcode
+pkgver=0.1
+pkgrel=1
+pkgdesc="darkc0de wordlist"
+url=""
+arch=("any")
+license=("unknown")
+source=("darkc0de.lst")
+md5sums=('0f2714b4c591c63d7c0fb7e6ff64c6fa')
+
+build() {
+  msg "Nothing to build"
+}
+
+package() {
+  install -D -m664 "${startdir}/darkc0de.lst" "${pkgdir}/usr/share/dict/darkcode"
+}
