@@ -2,7 +2,7 @@
 pkgname=irssi-script-nm
 _name=nm.pl
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Right aligned nicks depending on longest nick"
 arch=(any)
 url="http://scripts.irssi.org/"

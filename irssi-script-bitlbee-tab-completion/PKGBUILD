@@ -2,7 +2,7 @@
 pkgname=irssi-script-bitlbee-tab-completion
 _name=bitlbee_tab_completion.pl
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Intelligent Tab-completion for BitlBee commands"
 arch=(any)
 url="http://scripts.irssi.org/"

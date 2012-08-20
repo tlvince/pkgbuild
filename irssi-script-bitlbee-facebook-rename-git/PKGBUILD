@@ -2,7 +2,7 @@
 pkgname=irssi-script-bitlbee-facebook-rename-git
 _name=facebook_bitlbee_rename.pl
 pkgver=20120225
-pkgrel=1
+pkgrel=2
 pkgdesc="Rename Facebook numeric nicks to sensible names"
 arch=(any)
 url="https://github.com/avar/irssi-bitlbee-facebook-rename"

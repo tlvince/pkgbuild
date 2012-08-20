@@ -2,7 +2,7 @@
 pkgname=irssi-script-trackbar
 _name=trackbar.pl
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows a bar where you've last read a window"
 arch=(any)
 url="http://scripts.irssi.org/"

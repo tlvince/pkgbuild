@@ -2,7 +2,7 @@
 pkgname=irssi-script-link-titles
 _name=link_titles.pl
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Catch urls in channel and print the page title."
 arch=(any)
 url="https://github.com/pbrisbin/irssi-scripts"

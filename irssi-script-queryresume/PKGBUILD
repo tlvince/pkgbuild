@@ -2,7 +2,7 @@
 pkgname=irssi-script-queryresume
 _name=queryresume.pl
 pkgver=2003021201
-pkgrel=1
+pkgrel=2
 pkgdesc="Restores the last lines of a query on re-creation"
 arch=(any)
 url="http://scripts.irssi.org/"

@@ -2,7 +2,7 @@
 pkgname=irssi-script-dictionary-complete
 _name=dictcomplete.pl
 pkgver=1.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Caching dictionary based tab completion"
 arch=(any)
 url="http://scripts.irssi.org/"

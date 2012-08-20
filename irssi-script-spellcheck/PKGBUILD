@@ -2,7 +2,7 @@
 pkgname=irssi-script-spellcheck
 _name=spellcheck.pl
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Checks for spelling errors using Aspell."
 arch=(any)

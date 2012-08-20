@@ -2,7 +2,7 @@
 pkgname=irssi-script-advanced-windowlist
 _name=adv_windowlist.pl
 pkgver=0.6ca
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds a permanent advanced window list to irssi status bar"
 arch=(any)
 url="http://anti.teamidiot.de/static/nei/*/Code/Irssi/"

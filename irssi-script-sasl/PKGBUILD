@@ -2,7 +2,7 @@
 pkgname=irssi-script-sasl
 _name=cap_sasl.pl
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Freenode SASL support for irssi"
 arch=(any)

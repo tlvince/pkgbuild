@@ -2,7 +2,7 @@
 pkgname=irssi-script-hilightwin
 _name=hilightwin.pl
 pkgver=0.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Print hilighted messages to window named hilight"
 arch=(any)
 url="http://scripts.irssi.org/"
