@@ -9,11 +9,8 @@ url="http://scripts.irssi.org/"
 source="http://scripts.irssi.org/scripts/$_name"
 license=('GPL')
 depends=('irssi')
+md5sums=('ecb88c0addf16640b46f76d974ab55dc')
 
 package() {
-  cd "$srcdir"
-  install -D -d "$pkgdir/usr/share/irssi/scripts"
-  cp "$_name" "$pkgdir/usr/share/irssi/scripts"
+  install -Dm644 "$srcdir/$_name" "$pkgdir/usr/share/irssi/scripts/$_name"
 }
-
-md5sums=('ecb88c0addf16640b46f76d974ab55dc')
