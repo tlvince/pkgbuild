@@ -1,0 +1,11 @@
+post_install() {
+   cat << EOF
+1. Create the config directory:
+
+    mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools
+
+2. Install the example config:
+
+    install -Dm644  example/dmenu-tools.conf ~/.config/dmenu-tools/
+EOF
+}
