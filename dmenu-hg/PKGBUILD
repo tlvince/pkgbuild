@@ -8,7 +8,7 @@
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
 
 pkgname=dmenu-hg
-pkgver=
+pkgver=489
 pkgrel=3
 pkgdesc="A generic menu for X, latest hg pull"
 url="http://tools.suckless.org/dmenu/"
@@ -18,6 +18,9 @@ depends=('sh' 'libxinerama')
 makedepends=('mercurial')
 conflicts=('dmenu')
 provides=('dmenu')
+
+_hgroot='http://hg.suckless.org'
+_hgrepo='dmenu'
 
 build() {
   cd $srcdir
