@@ -9,7 +9,7 @@
 
 pkgname=dmenu-hg-config
 pkgver=489
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic menu for X, latest hg pull, sourced config patch"
 url="http://tools.suckless.org/dmenu/"
 arch=('i686' 'x86_64')
