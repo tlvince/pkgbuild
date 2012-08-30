@@ -43,9 +43,9 @@ package() {
   cd "$srcdir/$_svnmod-build/boilerpipe-core/dist"
 
   install -Dm644 "$_boilerpipe_jar" \
-                 "$pkgdir/usr/share/$_pkgname/$_boilerpipe_jar"
+                 "$pkgdir/usr/share/java/$_pkgname/$_boilerpipe_jar"
   install -Dm644 "$startdir/$_nekohtml_jar" \
-                 "$pkgdir/usr/share/$_pkgname/$_nekohtml_jar"
+                 "$pkgdir/usr/share/java/$_pkgname/$_nekohtml_jar"
   install -Dm644 "$startdir/$_xerces_jar" \
-                 "$pkgdir/usr/share/$_pkgname/$_xerces_jar"
+                 "$pkgdir/usr/share/java/$_pkgname/$_xerces_jar"
 }
