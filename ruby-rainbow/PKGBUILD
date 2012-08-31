@@ -1,4 +1,5 @@
 # Contributor: Juan Diego Tascon
+# Contributor: Tom Vincent <http://tlvince.com/contact/>
 
 pkgname=ruby-rainbow
 pkgver=1.1.1
@@ -12,7 +13,7 @@ source=("http://gems.rubyforge.org/gems/rainbow-${pkgver}.gem")
 
 build() {
   cd "$srcdir"
-  gem install --ignore-dependencies \
+  gem install --no-user-install --ignore-dependencies \
     -i "${pkgdir}/$(gem environment gemdir)" "rainbow-${pkgver}.gem"
 }
 
