@@ -9,6 +9,7 @@ url="https://github.com/misja/python-boilerpipe"
 license=('GPL')
 depends=('python2' 'jpype' 'python2-chardet')
 makedepends=('git')
+conflicts=("$_pkgname-patched-git")
 options=(!emptydirs)
 
 _gitroot=https://github.com/misja/python-boilerpipe.git
