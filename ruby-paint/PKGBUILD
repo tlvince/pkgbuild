@@ -1,4 +1,5 @@
 # Maintainer: Gordin <9ordin @t gmail dot com>
+# Contributor: Tom Vincent <http://tlvince.com/contact/>
 pkgname=ruby-paint
 pkgver=0.8.3
 pkgrel=2
@@ -15,8 +16,8 @@ sha256sums=('b62fdbcd5c578d6ea909ac281f60dca2369fae078cdeb65e6014dcd9bc1770d7')
 build() {
   cd $srcdir
   local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies -i "$pkgdir$_gemdir" paint-$pkgver.gem \
-  -n "$pkgdir/usr/bin"
+  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" paint-$pkgver.gem \
+    -n "$pkgdir/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:
