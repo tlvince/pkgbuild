@@ -2,7 +2,7 @@
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
 pkgname=ruby-paint
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal painter!"
 arch=('any')
 url="https://github.com/janlelis/paint"
