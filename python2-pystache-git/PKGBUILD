@@ -2,7 +2,7 @@
 # Contributor: Tyler Harper <tyler@cowboycoding.net>
 
 pkgname=python2-pystache-git
-pkgver=20091121
+pkgver=20120905
 pkgrel=1
 pkgdesc="The mustache template engine written in python"
 arch=(any)
