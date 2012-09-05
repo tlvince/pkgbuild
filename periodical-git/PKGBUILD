@@ -2,13 +2,13 @@
 _pkgname=periodical
 pkgname=$_pkgname-git
 pkgver=20120905
-pkgrel=1
+pkgrel=2
 pkgdesc="Create a Kindle periodical from given URL(s)"
 arch=(any)
 url="http://tlvince.github.com/periodical"
 license=('GPL')
 depends=('python2' 'python2-boilerpipe-patched-git' 'python2-beautifulsoup4'
-         'python2-yaml')
+         'python2-yaml' 'ruby-kindlerb')
 makedepends=('git')
 options=(!emptydirs)
 
