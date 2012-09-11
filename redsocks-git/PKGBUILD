@@ -22,7 +22,7 @@ source=('redsocks.rc'
         'redsocks.confd'
         'redsocks.tmpfiles'
         'redsocks.rules')
-md5sums=('a246ac38ae70d77aa31d31e6d9c08993'
+md5sums=('af62e44c059972314c56ec2fadb56f44'
          'ed8b0090ded9de0940b1cd7539c78422'
          '174129e652467b8880ef2c2ec18d36b0'
          '9be5e8bea768b1a8fdec55a8e8af33fd'
