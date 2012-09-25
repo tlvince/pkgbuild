@@ -8,6 +8,7 @@ url="https://github.com/visionmedia/git-extras"
 license=('MIT')
 depends=('git')
 makedepends=('git')
+conflicts=('git-extras')
 
 _gitroot="git://github.com/visionmedia/git-extras.git"
 _gitname="git-extras"
