@@ -1,10 +1,8 @@
-# Maintainer: jasonwryan
-# Using the patch queue extension
-
-pkgname=dwm-hg
+# Maintainer: Tom Vincent <http://tlvince.com/contact>
+pkgname=dwm-tlvince-hg
 pkgver=1605
 pkgrel=1
-pkgdesc="a dynamic window manager for X"
+pkgdesc="A dynamic window manager for X, personalised"
 url="http://dwm.suckless.org"
 license=('custom:MIT/X')
 arch=('i686' 'x86_64')
