@@ -1,17 +1,17 @@
 # Maintainer: Gordin <9ordin @t gmail dot com>
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
 pkgname=ruby-paint
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Terminal painter!"
 arch=('any')
 url="https://github.com/janlelis/paint"
 license=('MIT')
-depends=('ruby' 'ruby-rspec' 'ruby-rspec-core' 'ruby-rainbow' 'ruby-term-ansicolor')
+depends=('ruby')
 makedepends=('rubygems')
 source=("http://gems.rubyforge.org/gems/paint-${pkgver}.gem")
 noextract=("paint-${pkgver}.gem")
-sha256sums=('7e9eb5ab241392e4183f15e59ae37c893951da1aed63f9a0b967e5adec757416')
+sha256sums=('bc11b8d05253860ccc3e1958c6e8d0565574015b880d64b1e184c11fd831228c')
 
 build() {
   cd $srcdir
