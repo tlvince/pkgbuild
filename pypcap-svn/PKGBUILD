@@ -6,7 +6,7 @@ pkgdesc="Python extension module for libpcap. \
 This is a svn version."
 url="http://code.google.com/p/pypcap/"
 license=('BSD')
-arch=('i686')
+arch=('i686' 'x86_64')
 depends=('python2' 'libpcap')
 makedepends=('python2' 'libpcap' 'pyrex' 'subversion')
 conflicts=('pypcap')
