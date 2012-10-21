@@ -20,5 +20,5 @@ build() {
 
 package() {
   cd "$srcdir"
-  install -Dm644 "$_pkgname.py" "$pkgdir/usr/lib/gimp/2.0/plug-ins/$_pkgname.py"
+  install -Dm755 "$_pkgname.py" "$pkgdir/usr/lib/gimp/2.0/plug-ins/$_pkgname.py"
 }
