@@ -1,16 +1,17 @@
-# Maintainer: Tom Vincent <http://www.tlvince.com/contact/>
+# Maintainer: Tom Vincent <http://tlvince.com/contact>
 
-pkgname=jack_mixer-git
-pkgver=20091230
-pkgrel=3
+_pkgname=jack_mixer
+pkgname=$_pkgname-git
+pkgver=20121021
+pkgrel=1
 pkgdesc="A GTK based Jack audio mixer"
 url="http://home.gna.org/jackmixer/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('python-fpconst' 'jack-audio-connection-kit')
+depends=('python2' 'python2-fpconst' 'pygtk' 'jack' 'hicolor-icon-theme')
 optdepends=('lash: session support'
-            'gnome-python: GConf settings preservation')
-makedepends=('swig')
+            'python2-gconf: gconf support')
+makedepends=('git')
 provides=('jack_mixer')
 conflicts=('jack_mixer')
 
@@ -18,22 +19,37 @@ _gitroot="git://repo.or.cz/jack_mixer.git"
 _gitname="jack_mixer"
 
 build() {
-  msg "Connecting to GIT server..."
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
 
-  if [[ -d $startdir/src/$_gitname ]] ; then
-    cd $_gitname
-    git pull origin || return 1
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
     msg "The local files are updated."
   else
-    git clone $_gitroot || return 1
+    git clone "$_gitroot" "$_gitname"
   fi
 
   msg "GIT checkout done or server timeout"
-  msg "Starting make..."
+  msg "Starting build..."
 
-  cd $startdir/src/$_gitname
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+
+  #Python2 fixes
+  export PYTHON="python2"
+  sed -i "s_env python_&2_" $_pkgname.py
+
   ./autogen.sh
-  ./configure --prefix=/usr
-  make || return 1
-  make DESTDIR=$pkgdir install || return 1
+  ./configure \
+	--prefix=/usr \
+	--sysconfdir=/usr/share \
+	--disable-schemas-install
+
+  make
+}
+
+package() {
+  cd "$srcdir/$_gitname-build"
+  make DESTDIR="$pkgdir/" install
 }
