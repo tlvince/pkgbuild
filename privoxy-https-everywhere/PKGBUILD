@@ -4,7 +4,7 @@
 # Contributor: basilburn (basilburn), Paul Bredbury (brebs)
 
 _pkgname=privoxy
-pkgname=$_pkgname-freedombox
+pkgname=freedombox-$_pkgname-git
 _pkgver=3.0.19
 pkgver=20121129
 pkgrel=1
