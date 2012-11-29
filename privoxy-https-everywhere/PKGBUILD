@@ -14,7 +14,8 @@ url='http://www.privoxy.org'
 license=('GPL')
 depends=('pcre' 'zlib')
 makedepends=('autoconf' 'git' 'python2')
-conflicts=('privoxy')
+provides=($_pkgname)
+conflicts=($_pkgname)
 backup=('etc/conf.d/privoxy'
         'etc/privoxy/'{config,trust,default.action,user.filter,default.filter}
         'etc/privoxy/'{match-all,user}.action
