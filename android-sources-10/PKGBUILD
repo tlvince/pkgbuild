@@ -2,7 +2,7 @@
 
 _rev=r1
 _sdkver=2.3.7
-_sdkint=17
+_sdkint=10
 
 _pkgname=android-sources-$_sdkint
 pkgname=$_pkgname-git
