@@ -1,7 +1,7 @@
 # Maintainer: Tom Vincent <http://tlvince.com/contact/>
 pkgname=dmenu-tools-git
 _pkgname=dmenu-tools
-pkgver=20121001
+pkgver=20130126
 pkgrel=1
 pkgdesc="A collection of scripts powered by dmenu"
 arch=(any)
@@ -32,18 +32,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname/src"
-  for i in *; do
-    install -Dm755 "$i" "$pkgdir/usr/bin/$i"
-  done
-
-  cd ../doc
-  for i in *; do
-    install -Dm644 "$i" "$pkgdir/usr/share/doc/dmenu-tools/$i"
-  done
-
-  install -Dm644 ../license.mkd "$pkgdir/usr/share/licenses/dmenu-tools/license.txt"
-  install -Dm644 ../example/dmenu.conf "$pkgdir/usr/share/doc/dmenu-tools/dmenu.conf"
+  cd "$srcdir/$_pkgname"
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
 
 # vim:set ts=2 sw=2 et:
