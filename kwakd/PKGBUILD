@@ -2,7 +2,7 @@
 
 pkgname=kwakd
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A web server serving blank html pages"
 url="https://code.google.com/p/kwakd/"
 arch=("any")
