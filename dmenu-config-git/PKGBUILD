@@ -7,41 +7,41 @@
 # Contributor: Andreas B. Wagner <AndreasBWagner@pointfree.net>
 # Contributor: v2punkt0 <v2punkt0@gmail.com>
 
-pkgname=dmenu-hg-config
-pkgver=489
-pkgrel=2
+_pkgname=dmenu
+pkgname=$_pkgname-config-git
+pkgver=20130306
+pkgrel=1
 pkgdesc="A generic menu for X, latest hg pull, sourced config patch"
 url="http://tools.suckless.org/dmenu/"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('sh' 'libxinerama')
-makedepends=('mercurial')
+makedepends=('git')
 conflicts=('dmenu')
 provides=('dmenu')
 source=('config.patch')
 md5sums=('34f84ecc65b7892b296b5fd18400d355')
 
-_hgroot='http://hg.suckless.org'
-_hgrepo='dmenu'
+_gitroot="git://git.suckless.org/$_pkgname"
+_gitname="$_pkgname"
 
 build() {
-  cd $srcdir
-  msg "Connecting to Mercurial server...."
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
 
-  if [ -d $_hgrepo ] ; then
-    cd $_hgrepo
-    hg pull -u || return 1
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
     msg "The local files are updated."
   else
-    hg clone $_hgroot $_hgrepo || return 1
+    git clone "$_gitroot" "$_gitname"
   fi
 
-  msg "Mercurial checkout done or server timeout"
-  msg "Starting make..."
+  msg "GIT checkout done or server timeout"
+  msg "Starting build..."
 
-  rm -rf "$srcdir/$_hgrepo-build"
-  cp -r "$srcdir/$_hgrepo" "$srcdir/$_hgrepo-build"
-  cd "$srcdir/$_hgrepo-build"
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
 
   patch < "$srcdir/config.patch"
 
@@ -51,7 +51,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_hgrepo-build"
+  cd "$srcdir/$_gitname-build"
   make PREFIX=/usr DESTDIR=$pkgdir install
   install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
