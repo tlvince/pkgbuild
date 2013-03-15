@@ -10,7 +10,7 @@ license=("MIT")
 depends=("dmenu")
 optdepends=("netcfg: dmenu_netcfg dependency"
             "mpc: dmenu_mpc dependency")
-            "wmctrl: dmenu_{run_or_,}raise dependency")
+            "wmctrl: dmenu_raise{,_or_run} dependency")
 makedepends=("git")
 install=$_pkgname.install
 
