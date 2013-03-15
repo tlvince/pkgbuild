@@ -1,0 +1,9 @@
+# dmenu-tlvince-git
+
+dmenu with some compile-time customisations.
+
+## Customisations
+
+* Always-on case insenistive matching
+* Terminus font
+* Solarized light colour scheme

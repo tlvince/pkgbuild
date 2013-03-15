@@ -1,0 +1,31 @@
+--- dmenu.c	2013-03-16 00:30:53.795396536 +0800
++++ dmenu-new.c	2013-03-16 00:36:55.973434431 +0800
+@@ -43,12 +43,12 @@
+ static int bh, mw, mh;
+ static int inputw, promptw;
+ static size_t cursor = 0;
+-static const char *font = NULL;
++static const char *font = "-*-terminus-medium-r-*-*-*-*-*-*-*-*-*-*";
+ static const char *prompt = NULL;
+-static const char *normbgcolor = "#222222";
+-static const char *normfgcolor = "#bbbbbb";
+-static const char *selbgcolor  = "#005577";
+-static const char *selfgcolor  = "#eeeeee";
++static const char *normbgcolor = "#fdf6e3";
++static const char *normfgcolor = "#657b83";
++static const char *selbgcolor  = "#eee8d5";
++static const char *selfgcolor  = "#2aa198";
+ static unsigned int lines = 0;
+ static unsigned long normcol[ColLast];
+ static unsigned long selcol[ColLast];
+@@ -61,8 +61,8 @@
+ static Window win;
+ static XIC xic;
+ 
+-static int (*fstrncmp)(const char *, const char *, size_t) = strncmp;
+-static char *(*fstrstr)(const char *, const char *) = strstr;
++static int (*fstrncmp)(const char *, const char *, size_t) = strncasecmp;
++static char *(*fstrstr)(const char *, const char *) = cistrstr;
+ 
+ int
+ main(int argc, char *argv[]) {

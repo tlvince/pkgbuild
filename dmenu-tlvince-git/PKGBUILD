@@ -1,0 +1,57 @@
+# Maintainer: Andreas B. Wagner <AndreasBWagner@pointfree.net>
+pkgname=dmenu-tlvince-git
+pkgver=20130316
+pkgrel=1
+pkgdesc="The latest git pull of dmenu, with customisations"
+arch=('i686' 'x86_64')
+url="http://tools.suckless.org/dmenu/"
+license=('MIT')
+groups=()
+depends=('libx11')
+makedepends=('git')
+provides=('dmenu')
+conflicts=('dmenu')
+replaces=('dmenu-hg')
+backup=()
+options=()
+install=
+source=('tlvince.patch')
+noextract=()
+md5sums=('1ce43b058e90b68e669396a7ba77f846')
+
+_gitroot='git://git.suckless.org/dmenu/'
+_gitname='dmenu'
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+
+  patch < "$srcdir/tlvince.patch"
+
+  #
+  # BUILD HERE
+  #
+  make
+}
+
+package() {
+  cd "$srcdir/$_gitname-build"
+  install -Dm644 ${srcdir}/${_gitname}-build/LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  make PREFIX="${pkgdir}/usr" install
+}
+
+# vim:set ts=2 sw=2 et:
