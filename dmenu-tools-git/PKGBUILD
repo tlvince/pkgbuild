@@ -1,8 +1,8 @@
 # Maintainer: Tom Vincent <http://tlvince.com/contact/>
 pkgname=dmenu-tools-git
 _pkgname=dmenu-tools
-pkgver=20130126
-pkgrel=2
+pkgver=20130316
+pkgrel=1
 pkgdesc="A collection of scripts powered by dmenu"
 arch=(any)
 url="https://github.com/tlvince/dmenu-tools"
@@ -10,6 +10,7 @@ license=("MIT")
 depends=("dmenu")
 optdepends=("netcfg: dmenu_netcfg dependency"
             "mpc: dmenu_mpc dependency")
+            "wmctrl: dmenu_{run_or_,}raise dependency")
 makedepends=("git")
 install=$_pkgname.install
 
