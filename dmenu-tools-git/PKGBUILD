@@ -2,14 +2,14 @@
 pkgname=dmenu-tools-git
 _pkgname=dmenu-tools
 pkgver=20130316
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of scripts powered by dmenu"
 arch=(any)
 url="https://github.com/tlvince/dmenu-tools"
 license=("MIT")
 depends=("dmenu")
 optdepends=("netcfg: dmenu_netcfg dependency"
-            "mpc: dmenu_mpc dependency")
+            "mpc: dmenu_mpc dependency"
             "wmctrl: dmenu_raise{,_or_run} dependency")
 makedepends=("git")
 install=$_pkgname.install
