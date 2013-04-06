@@ -18,3 +18,4 @@ otf-gill-sans-std/gill-sans-std.otf
 irssi-script-*/*.pl
 words-darkcode/darkc0de.lst
 android-sources-10/pack.py
+*.sig
