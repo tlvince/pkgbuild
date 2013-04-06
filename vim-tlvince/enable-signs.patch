@@ -1,5 +1,5 @@
---- a/src/feature.h	2013-04-07 03:35:12.939530448 +0800
-+++ b/src/feature.h	2013-04-07 03:35:07.292893579 +0800
+--- a/src/feature.h	2013-03-26 10:50:54.000000000 +0800
++++ b/src/feature.h	2013-04-07 04:02:11.740761157 +0800
 @@ -1272,8 +1272,8 @@
   * +signs		Allow signs to be displayed to the left of text lines.
   *			Adds the ":sign" command.
@@ -8,7 +8,7 @@
 -	    || defined(FEAT_NETBEANS_INTG)
 +/* #if defined(FEAT_BIG) || defined(FEAT_SUN_WORKSHOP) \ */
 +/* 	    || defined(FEAT_NETBEANS_INTG) */
- #define FEAT_SIGNS
+ # define FEAT_SIGNS
  # if ((defined(FEAT_GUI_MOTIF) || defined(FEAT_GUI_ATHENA)) \
  		&& defined(HAVE_X11_XPM_H)) \
 @@ -1281,7 +1281,7 @@
