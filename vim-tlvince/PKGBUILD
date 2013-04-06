@@ -1,5 +1,4 @@
-# Just plain vim
-
+# Maintainer: Tom Vincent <http://tlvince.com/contact>
 pkgbase=vim
 pkgname=('vim' 'vim-runtime')
 _topver=7.3
@@ -16,11 +15,13 @@ makedepends=('python2' 'libxt')
 source=("ftp://ftp.archlinux.org/other/vim/vim-${pkgver}.tar.xz"
         "ftp://ftp.archlinux.org/other/vim/vim-${pkgver}.tar.xz.sig"
         'vimrc'
-        'archlinux.vim')
+        'archlinux.vim'
+        'enable-signs.patch')
 md5sums=('4d71e8b9ef6a214b3651d69be19fadec'
-         'ac2bfed9586c987f0b8435c91be3f18a'
+         'SKIP'
          '20fceda56badf201695c57999b0bc609'
-         '10353a61aadc3f276692d0e17db1478e')
+         '10353a61aadc3f276692d0e17db1478e'
+         'fd9ed359048e5595efb740ba48cda9eb')
 # source PKGBUILD && mksource
 mksource() {
   [[ -x /usr/bin/hg ]] || (echo "hg not found. Install mercurial." && return 1)
@@ -65,17 +66,35 @@ build() {
 
   cd "${srcdir}"/vim-build
 
+  pwd
+
+  # Enables signs in normal version
+  patch -p1 < "${srcdir}/enable-signs.patch"
+
+  # See:
+  # http://vimdoc.sourceforge.net/htmldoc/various.html#+feature-list
+  # https://github.com/b4winckler/vim/blob/master/src/auto/configure#L1418
   ./configure \
     --prefix=/usr \
     --localstatedir=/var/lib/vim \
+    --with-compiledby=tlvince \
     --with-features=normal \
-    --with-compiledby=Arch:jwr \
-    --with-x=yes \
+    --without-x \
     --enable-acl \
+    --enable-multibyte \
+    --enable-pythoninterp \
     --disable-gui \
-    --disable-signs \
+    --disable-gpm \
+    --disable-nls \
+    --disable-xsmp \
+    --disable-darwin \
+    --disable-selinux \
+    --disable-gtktest \
     --disable-netbeans \
-    --enable-multibyte 
+    --disable-sysmouse \
+    --disable-luainterp \
+    --disable-hangulinput \
+    --disable-xsmp-interact \
 
   make
 }
@@ -141,4 +160,3 @@ package_vim-runtime() {
 }
 
 # vim:set sw=2 sts=2 et:
-
