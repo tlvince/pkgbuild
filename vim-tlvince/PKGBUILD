@@ -21,7 +21,7 @@ md5sums=('4d71e8b9ef6a214b3651d69be19fadec'
          'SKIP'
          '20fceda56badf201695c57999b0bc609'
          '10353a61aadc3f276692d0e17db1478e'
-         'fd9ed359048e5595efb740ba48cda9eb')
+         'bd30b4025369cc5e098367ef24dd3041')
 # source PKGBUILD && mksource
 mksource() {
   [[ -x /usr/bin/hg ]] || (echo "hg not found. Install mercurial." && return 1)
@@ -52,6 +52,7 @@ mksource() {
 }
 
 build() {
+  [ -d vim-build ] && rm -rf vim-build
   cp -a ${pkgname}-${pkgver} vim-build
 
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
@@ -62,11 +63,7 @@ build() {
 
   (cd vim-build/src && autoconf)
 
-  cp -a vim-build gvim-build
-
   cd "${srcdir}"/vim-build
-
-  pwd
 
   # Enables signs in normal version
   patch -p1 < "${srcdir}/enable-signs.patch"
@@ -77,9 +74,9 @@ build() {
   ./configure \
     --prefix=/usr \
     --localstatedir=/var/lib/vim \
-    --with-compiledby=tlvince \
+    --with-x \
     --with-features=normal \
-    --without-x \
+    --with-compiledby=tlvince \
     --enable-acl \
     --enable-multibyte \
     --enable-pythoninterp \
