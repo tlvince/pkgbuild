@@ -5,10 +5,10 @@
 # Maintainer : feydaykyn <feydaykyn@yahoo.fr>
 
 _npmname=yo
-_npmver=1.0.0-beta.3 #no colons in Arch PKGBUILD
+_npmver=1.0.0-beta.4 #no colons in Arch PKGBUILD
 
 pkgname=nodejs-yeoman # All lowercase
-pkgver=1.0.0_beta.3
+pkgver=1.0.0_beta.4
 pkgrel=1
 pkgdesc="The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project."
 arch=(any)
