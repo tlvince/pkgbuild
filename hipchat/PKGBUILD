@@ -11,11 +11,11 @@ license=('unknown')
 
 if [ "$CARCH" == "x86_64" ]; then
   source=(http://downloads.hipchat.com/linux/arch/hipchat-x86_64.tar.xz)
-  depends=('lib32-libxft' 'lib32-libltdl')
+  depends=('lib32-openssl' 'lib32-libstdc++5' 'lib32-libsm' 'lib32-libxext' 'lib32-libxft' 'lib32-libltdl')
   md5sums=('08b971d391f25b66d97d90d469c9cd66')
 else
   source=(http://downloads.hipchat.com/linux/arch/hipchat-i686.tar.xz)
-  depends=('libxft' 'libltdl')
+  depends=('openssl' 'libstdc++5' 'libsm' 'libxext' 'libxft' 'libltdl')
   md5sums=('b38464bc0eade9d936a61dad99b25434')
 fi
 
