@@ -2,7 +2,7 @@
 # Contributor: Tom Vincent <http://tlvince.com/contact>
 
 pkgname=hipchat
-pkgver=1.94.444
+pkgver=1.95.444
 pkgrel=1
 pkgdesc="Persistent group chat using XMPP"
 arch=('i686' 'x86_64')
