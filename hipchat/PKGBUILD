@@ -9,12 +9,11 @@ arch=('i686' 'x86_64')
 url="https://www.hipchat.com/linux"
 license=('unknown')
 depends=('openssl' 'libstdc++5' 'libsm' 'libxext' 'libxft' 'libltdl')
+source=("http://downloads.hipchat.com/linux/arch/hipchat-${CARCH}.tar.xz")
 
 if [ "$CARCH" == "x86_64" ]; then
-  source=(http://downloads.hipchat.com/linux/arch/hipchat-x86_64.tar.xz)
   md5sums=('ffd17e5447cc52753f95f5b5e7e9e72b')
 else
-  source=(http://downloads.hipchat.com/linux/arch/hipchat-i686.tar.xz)
   md5sums=('79ba64ff1f368d9340c0fa8dfd46d4d3')
 fi
 
