@@ -8,14 +8,13 @@ pkgdesc="Persistent group chat using XMPP"
 arch=('i686' 'x86_64')
 url="https://www.hipchat.com/linux"
 license=('unknown')
+depends=('openssl' 'libstdc++5' 'libsm' 'libxext' 'libxft' 'libltdl')
 
 if [ "$CARCH" == "x86_64" ]; then
   source=(http://downloads.hipchat.com/linux/arch/hipchat-x86_64.tar.xz)
-  depends=('lib32-openssl' 'lib32-libstdc++5' 'lib32-libsm' 'lib32-libxext' 'lib32-libxft' 'lib32-libltdl')
   md5sums=('ffd17e5447cc52753f95f5b5e7e9e72b')
 else
   source=(http://downloads.hipchat.com/linux/arch/hipchat-i686.tar.xz)
-  depends=('openssl' 'libstdc++5' 'libsm' 'libxext' 'libxft' 'libltdl')
   md5sums=('79ba64ff1f368d9340c0fa8dfd46d4d3')
 fi
 
