@@ -1,0 +1,51 @@
+# Maintainer: Tom Vincent <http://tlvince.com/contact>
+pkgname=st-git
+pkgver=1
+pkgrel=1
+pkgdesc='Simple virtual terminal emulator for X'
+url='http://git.suckless.org/st/'
+arch=('i686' 'x86_64' 'armv7h')
+license=('MIT')
+depends=('libxft')
+makedepends=('ncurses' 'libxext' 'git')
+provides=('st')
+conflicts=('st')
+
+_gitroot=https://github.com/tlvince/st.git
+_gitname=st
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin tlvince
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname" && git checkout -t origin/tlvince
+  fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+
+  read
+
+  #
+  # BUILD HERE
+  #
+	sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
+	sed -i 's/CFLAGS =/CFLAGS +=/g' config.mk
+	sed -i 's/LDFLAGS =/LDFLAGS +=/g' config.mk
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+	cd "${srcdir}/${_gitname}-build"
+	make PREFIX=/usr DESTDIR="${pkgdir}" TERMINFO="${pkgdir}/usr/share/terminfo" install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+}
