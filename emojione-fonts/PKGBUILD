@@ -1,13 +1,12 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=emojione-fonts
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Colored emoji fonts from EmojiOne project."
 url="https://github.com/emojione/emojione"
 arch=(any)
 license=(custom)
 depends=('fontconfig')
-optdepends=('cairo-coloredemoji: (Recommended) display color emoji in all GTK+ apps.')
 provides=('ttf-emojione')
 conflicts=('noto-fonts-emoji' 'ttf-emojione')
 source=("https://github.com/emojione/emojione-assets/releases/download/${pkgver}/emojione-android.ttf"
