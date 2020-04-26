@@ -1,0 +1,35 @@
+# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+pkgname=emmcdl-git
+pkgver=1
+pkgrel=1
+pkgdesc="Qualcomm"
+arch=(any)
+url="https://github.com/binsys/emmcdl"
+license=('GPL')
+depends=()
+makedepends=('git' 'automake-1.11')
+
+_gitroot=https://github.com/binsys/emmcdl
+_gitname=$pkgname
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
+
+  msg "GIT checkout done or server timeout"
+
+  cd "$srcdir/$pkgname"
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  make DESTDIR="$pkgdir/" install
+}
