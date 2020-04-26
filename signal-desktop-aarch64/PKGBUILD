@@ -1,16 +1,17 @@
-# Maintainer: kpcyrd <kpcyrd[at]archlinux[dot]org>
+# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Contributor: kpcyrd <kpcyrd[at]archlinux[dot]org>
 # Contributor: Jean Lucas <jean@4ray.co>
 
-pkgname=signal-desktop
+pkgname=signal-desktop-aarch64
 _pkgname=Signal-Desktop
 pkgver=1.33.3
 pkgrel=1
 pkgdesc="Electron application that links with Signal on mobile"
 license=('GPL3')
 replaces=('signal-desktop-bin')
-arch=('x86_64')
+arch=('aarch64')
 url="https://signal.org"
-depends=('electron' 'libvips')
+depends=('electron8-bin' 'libvips')
 makedepends=('yarn' 'git' 'nodejs' 'npm' 'python')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver}.tar.gz"
@@ -40,7 +41,7 @@ prepare() {
   sed -r 's#("spellchecker": ").*"#\1file:'"${srcdir}"'/613ff91dd2d9a5ee0e86be8a3682beecc4e94887.tar.gz"#' -i package.json
 
   # Set system Electron version for ABI compatibility
-  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
+  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron8/version)'"#' -i package.json
 
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
@@ -50,6 +51,9 @@ prepare() {
   # https://github.com/sass/node-sass/pull/2841
   # https://github.com/sass/node-sass/issues/2716
   sed 's#"resolutions": {#"resolutions": {"node-sass/node-gyp": "^6.0.0",#' -i package.json
+
+  # Disable packaging since we only use the asar
+  sed 's#"deb"$#"dir"#' -i package.json
 
   yarn install
 
@@ -75,11 +79,11 @@ package() {
   cd "${_pkgname}-${pkgver}"
 
   install -d "${pkgdir}/usr/"{lib,bin}
-  cp -a release/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
+  cp -a dist/linux-arm64-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
   cat << EOF > "${pkgdir}"/usr/bin/${pkgname}
 #!/bin/sh
 
-NODE_ENV=production electron /usr/lib/${pkgname}/app.asar "\$@"
+NODE_ENV=production /usr/bin/electron8 /usr/lib/${pkgname}/app.asar "\$@"
 EOF
   chmod +x "${pkgdir}/usr/bin/${pkgname}"
 
