@@ -4,6 +4,7 @@
 
 pkgname=signal-desktop-aarch64
 _pkgname=Signal-Desktop
+__pkgname=signal-desktop
 pkgver=1.33.3
 pkgrel=1
 pkgdesc="Electron application that links with Signal on mobile"
@@ -14,8 +15,8 @@ url="https://signal.org"
 depends=('electron8-bin' 'libvips')
 makedepends=('yarn' 'git' 'nodejs' 'npm' 'python')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver}.tar.gz"
-  "${pkgname}.desktop"
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver}.tar.gz"
+  "${__pkgname}.desktop"
   "openssl-linking.patch"
   "expire-from-source-date-epoch.patch"
   # Cherry-pick a specific commit for the node-spellchecker dependency
@@ -79,18 +80,18 @@ package() {
   cd "${_pkgname}-${pkgver}"
 
   install -d "${pkgdir}/usr/"{lib,bin}
-  cp -a dist/linux-arm64-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
-  cat << EOF > "${pkgdir}"/usr/bin/${pkgname}
+  cp -a dist/linux-arm64-unpacked/resources "${pkgdir}/usr/lib/${__pkgname}"
+  cat << EOF > "${pkgdir}"/usr/bin/${__pkgname}
 #!/bin/sh
 
-NODE_ENV=production /usr/bin/electron8 /usr/lib/${pkgname}/app.asar "\$@"
+NODE_ENV=production /usr/bin/electron8 /usr/lib/${__pkgname}/app.asar "\$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/${pkgname}"
+  chmod +x "${pkgdir}/usr/bin/${__pkgname}"
 
-  install -Dm 644 "../${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 "../${__pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   for i in 16 24 32 48 64 128 256 512 1024; do
     install -Dm 644 "build/icons/png/${i}x${i}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${__pkgname}.png"
   done
 }
 
