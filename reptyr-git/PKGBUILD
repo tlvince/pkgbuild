@@ -1,5 +1,5 @@
 # Maintainer: Anselm Helbig <anselm.helbig+aur@googlemail.com>
-# Contributor: Copyright Tom Vincent <http://tlvince.com/contact/>
+# Contributor: Copyright Tom Vincent <https://tlvince.com/contact>
 pkgname=reptyr-git
 pkgver=20120517
 pkgrel=1

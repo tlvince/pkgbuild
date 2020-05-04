@@ -1,4 +1,4 @@
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Tom Vincent <https://tlvince.com/contact>
 pkgname=irssi-script-link-titles
 _name=link_titles.pl
 pkgver=0.1

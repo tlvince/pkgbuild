@@ -1,5 +1,5 @@
 # Contributor: Martin Ellis <ellism88@gmail.com>
-# Contributor: Tom Vincent <http://tlvince.com/contact/>
+# Contributor: Tom Vincent <https://tlvince.com/contact>
 
 _pkgname32=kroc
 pkgname=bin32-$_pkgname32

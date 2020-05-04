@@ -1,4 +1,4 @@
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Tom Vincent <https://tlvince.com/contact>
 pkgname=ruby-w3c_validators
 _pkgname=w3c_validators
 pkgver=1.2

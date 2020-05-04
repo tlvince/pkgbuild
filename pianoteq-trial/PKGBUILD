@@ -1,6 +1,6 @@
 # NOTE: Doesn't work! Segfaults on start up. Probably needs write permissions?
 
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Tom Vincent <https://tlvince.com/contact>
 pkgname=pianoteq-trial
 _pkgname=pianoteq
 pkgver=3.6.8

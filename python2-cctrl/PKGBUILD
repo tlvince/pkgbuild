@@ -1,4 +1,4 @@
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Tom Vincent <https://tlvince.com/contact>
 pkgname=python2-cctrl
 _pkgname=cctrl
 pkgver=1.2.3

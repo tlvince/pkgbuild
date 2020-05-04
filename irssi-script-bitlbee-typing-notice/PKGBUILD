@@ -1,4 +1,4 @@
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Tom Vincent <https://tlvince.com/contact>
 pkgname=irssi-script-bitlbee-typing-notice
 _name=bitlbee_typing_notice.pl
 pkgver=1.7.1

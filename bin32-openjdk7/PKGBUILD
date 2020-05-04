@@ -1,4 +1,4 @@
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Tom Vincent <https://tlvince.com/contact>
 # Contributor: c0nd0r <gcesarmza@gmail.com>
 pkgname=bin32-openjdk7
 _pkgname=jdk7-openjdk

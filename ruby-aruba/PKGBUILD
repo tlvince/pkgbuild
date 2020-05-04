@@ -1,4 +1,4 @@
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Tom Vincent <https://tlvince.com/contact>
 pkgname=ruby-aruba
 _gemname=${pkgname#ruby-}
 pkgver=0.4.11

@@ -1,4 +1,4 @@
-# Contributor: Tom Vincent <http://tlvince.com/contact/>
+# Contributor: Tom Vincent <https://tlvince.com/contact>
 _pkgname=raury
 pkgname=$_pkgname-git
 _pkgver=0.0.1

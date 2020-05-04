@@ -1,6 +1,6 @@
 # Maintainer: Jiri Prochazka <ojirio at gmail dot com>
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
-# Contributor: Tom Vincent <http://tlvince.com/contact/>
+# Contributor: Tom Vincent <https://tlvince.com/contact>
 
 pkgname=linuxsampler-svn
 _pkg="${pkgname%-svn}"

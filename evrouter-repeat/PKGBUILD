@@ -1,5 +1,5 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Tom Vincent <https://tlvince.com/contact>
 pkgname=evrouter-repeat
 _pkgname=evrouter
 pkgver=0.4
