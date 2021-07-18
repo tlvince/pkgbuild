@@ -19,3 +19,5 @@ irssi-script-*/*.pl
 words-darkcode/darkc0de.lst
 android-sources-10/pack.py
 *.sig
+python-tidal
+python-tidal-0.6.x-git-v0.6.8.r1.gd7a77f3-1-any.pkg.tar.zst
