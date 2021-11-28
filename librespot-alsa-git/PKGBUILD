@@ -1,18 +1,19 @@
-# Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
+# Maintainer: Tom Vincent <aur@tlvince.com>
+# Contributor: Christoph Gysin <christoph.gysin@gmail.com>
 
-pkgname=librespot-git
+pkgname=librespot-alsa-git
 _pkgname=librespot
-pkgver=1383.095536f
-pkgrel=3
+pkgver=1420.bbd575e
+pkgrel=1
 epoch=1
-pkgdesc="Open Source Spotify client library"
+pkgdesc="Open Source Spotify client library, alsa backend"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/librespot-org/librespot"
 license=('MIT')
 depends=('libvorbis' 'alsa-lib')
 makedepends=('git' 'rust')
 provides=('librespot')
-conflicts=('librespot')
+conflicts=('librespot' 'librespot-git')
 source=('git+https://github.com/librespot-org/librespot')
 sha256sums=('SKIP')
 
@@ -38,7 +39,9 @@ build() {
     cd "$_pkgname"
     cargo build \
         --frozen \
-        --release
+        --release \
+        --no-default-features \
+        --features alsa-backend
 }
 
 package() {
