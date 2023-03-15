@@ -9,6 +9,7 @@ pkg/
 *.tar
 *.tar.bz2
 *.tar.gz
+*.tar.zst
 *.tgz
 *.zip
 *.xz
