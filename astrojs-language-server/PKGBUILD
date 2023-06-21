@@ -1,6 +1,6 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
-pkgname=nodejs-astrojs-language-server
-_pkgname=${pkgname#nodejs-astrojs-}
+pkgname=astrojs-language-server
+_pkgname=${pkgname#astrojs-}
 pkgver=2.0.17
 pkgrel=1
 pkgdesc="The Astro language server, powered by Volar"
