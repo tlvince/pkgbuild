@@ -1,6 +1,6 @@
 _npmname=have-it
 pkgname=nodejs-$_npmname
-pkgver=1.11.1
+pkgver=1.11.1 # renovate: datasource=github-tags depName=bahmutov/have-it
 pkgrel=1
 pkgdesc="The fastest NPM install does nothing because you already have it"
 arch=(any)
