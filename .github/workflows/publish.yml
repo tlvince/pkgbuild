@@ -19,8 +19,12 @@ jobs:
           set -euxo pipefail
           PKGBUILD_PATH="$(git diff --name-only HEAD HEAD~1 "*/PKGBUILD" | head -1)"
           PKGBUILD_DIR="${PKGBUILD_PATH%/*}"
+
+          read -r PKGNAME PKGVER <<< $(awk -F' = ' '/^pkgname =/ {name=$2} /^[[:space:]]*pkgver =/ {ver=$2} END {print name, ver}' "$PKGBUILD_DIR/.SRCINFO")
+
+          echo "$PKGNAME" >> "$GITHUB_ENV"
+          echo "$PKGVER" >> "$GITHUB_ENV"
           echo "$PKGBUILD_PATH" >> "$GITHUB_ENV"
-          awk -F' = ' '/^pkgname =/ {name=$2} /^[[:space:]]*pkgver =/ {ver=$2} END {print "PKGNAME=" name "\nPKGVER=" ver}' "$PKGBUILD_DIR/.SRCINFO" >> "$GITHUB_ENV"
       - name: Publish package
         uses: KSXGitHub/github-actions-deploy-aur@063daf78a56662642bb00049ce78425ff6d0fad7 # v2.7.0
         if: ${{ env.PKGBUILD_PATH != '' }}
