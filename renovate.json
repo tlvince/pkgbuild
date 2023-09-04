@@ -15,12 +15,5 @@
       ],
       "extractVersionTemplate": "^v?(?<version>.*)$"
     }
-  ],
-  "packageRules": [
-    {
-      "matchFileNames": ["(^|/)PKGBUILD$"],
-      "commitMessageTopic": "",
-      "extends": [":semanticPrefixFix", ":semanticCommitScope({{parentDir}})"]
-    }
   ]
 }
