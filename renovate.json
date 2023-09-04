@@ -18,9 +18,7 @@
   ],
   "packageRules": [
     {
-      "matchFileNames": ["(^|/)PKGBUILD$"],
-      "commitMessageTopic": "",
-      "extends": [":semanticPrefixFix", ":semanticCommitScope({{parentDir}})"]
+      "matchFileNames": ["(^|/)PKGBUILD$"]
     }
   ]
 }
