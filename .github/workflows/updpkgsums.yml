@@ -6,6 +6,8 @@ on:
       - synchronize
     branches:
       - master
+    paths:
+      - "*/PKGBUILD"
 jobs:
   updpkgsums:
     runs-on: ubuntu-latest
@@ -19,15 +21,17 @@ jobs:
         run: |
           #!/usr/bin/env bash
           set -euxo pipefail
-          echo "pkgbuild=$(git diff --name-only origin/master origin/${GITHUB_HEAD_REF} "*PKGBUILD" | head -1 | xargs dirname)" >> $GITHUB_ENV
+          PKGBUILD_PATH="$(git diff --name-only origin/master origin/${GITHUB_HEAD_REF} "*/PKGBUILD" | head -1)"
+          PKGBUILD_DIR="${PKGBUILD_PATH%/*}"
+          echo "PKGBUILD_DIR=$PKGBUILD_DIR" >> "$GITHUB_ENV"
       - name: Validate package
-        if: ${{ env.pkgbuild != '' }}
+        if: ${{ env.PKGBUILD_DIR != '' }}
         uses: ./.github/actions/aur
         with:
           action: "updpkgsums"
-          pkgname: ${{ env.pkgbuild }}
+          pkgname: ${{ env.PKGBUILD_DIR }}
       - name: Commit
-        if: ${{ env.pkgbuild != '' }}
+        if: ${{ env.PKGBUILD_DIR != '' }}
         uses: stefanzweifel/git-auto-commit-action@3ea6ae190baf489ba007f7c92608f33ce20ef04a # v4.16.0
         with:
           file_pattern: "*/PKGBUILD */.SRCINFO"
