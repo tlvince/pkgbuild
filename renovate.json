@@ -4,7 +4,7 @@
     "config:base",
     ":rebaseStalePrs",
     ":semanticCommits",
-    ":semanticCommitScope(deps)",
+    ":semanticCommitScope({{parentDir}})",
     "helpers:pinGitHubActionDigests"
   ],
   "regexManagers": [
