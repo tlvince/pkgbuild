@@ -1,0 +1,20 @@
+# Maintainer: Tom Vincent <aur@tlvince.com>
+pkgname=ruby-semverse
+_gemname=semverse
+pkgver=2.0.0
+pkgrel=3
+pkgdesc="An elegant library for representing and comparing SemVer versions and constraints"
+arch=('any')
+url="https://github.com/berkshelf/semverse"
+license=('APACHE')
+depends=('ruby')
+makedepends=('rubygems')
+source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")
+noextract=("${_gemname}-${pkgver}.gem")
+sha256sums=('cfea122a73241702719df6d75a309c313626d7db0b8615d7dac5e8468ad4a0b1')
+
+package() {
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+}
