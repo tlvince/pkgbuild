@@ -17,13 +17,17 @@ jobs:
         run: |
           #!/usr/bin/env bash
           set -euxo pipefail
-          echo "pkgbuild=$(git diff --name-only HEAD HEAD~1 "*/.SRCINFO" | head -1 | xargs dirname)" >> $GITHUB_ENV
+          PKGBUILD_PATH="$(git diff --name-only HEAD HEAD~1 "*/PKGBUILD" | head -1)"
+          PKGBUILD_DIR="${PKGBUILD_PATH%/*}"
+          echo "$PKGBUILD_PATH" >> "$GITHUB_ENV"
+          awk -F' = ' '/^pkgname =/ {name=$2} /^[[:space:]]*pkgver =/ {ver=$2} END {print "PKGNAME=" name "\nPKGVER=" ver}' "$PKGBUILD_DIR/.SRCINFO" >> "$GITHUB_ENV"
       - name: Publish package
         uses: KSXGitHub/github-actions-deploy-aur@063daf78a56662642bb00049ce78425ff6d0fad7 # v2.7.0
-        if: ${{ env.pkgbuild != '' }}
+        if: ${{ env.PKGBUILD_PATH != '' }}
         with:
-          pkgname: ${{ env.pkgbuild }}
-          pkgbuild: ${{ env.pkgbuild }}/PKGBUILD
+          pkgname: ${{ env.PKGNAME }}
+          pkgbuild: ${{ env.PKGBUILD_PATH }}
           commit_username: ${{ secrets.AUR_USERNAME }}
           commit_email: ${{ secrets.AUR_EMAIL }}
+          commit_message: ${{ env.PKGVER }}
           ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
