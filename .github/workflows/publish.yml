@@ -1,0 +1,29 @@
+name: publish
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "*/PKGBUILD"
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
+        with:
+          fetch-depth: 0
+      - name: Find updated package
+        run: |
+          #!/usr/bin/env bash
+          set -euxo pipefail
+          echo "pkgbuild=$(git diff --name-only HEAD HEAD~1 "*/.SRCINFO" | head -1 | xargs dirname)" >> $GITHUB_ENV
+      - name: Publish package
+        uses: KSXGitHub/github-actions-deploy-aur@063daf78a56662642bb00049ce78425ff6d0fad7 # v2.7.0
+        if: ${{ env.pkgbuild != '' }}
+        with:
+          pkgname: ${{ env.pkgbuild }}
+          pkgbuild: ${{ env.pkgbuild }}/PKGBUILD
+          commit_username: ${{ secrets.AUR_USERNAME }}
+          commit_email: ${{ secrets.AUR_EMAIL }}
+          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
