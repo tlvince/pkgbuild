@@ -5,6 +5,7 @@
     ":rebaseStalePrs",
     ":semanticCommits",
     ":semanticCommitScope({{parentDir}})",
+    ":semanticCommitType(fix)",
     "helpers:pinGitHubActionDigests"
   ],
   "commitMessageTopic": "",
