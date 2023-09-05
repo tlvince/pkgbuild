@@ -9,7 +9,7 @@ license=('MIT')
 depends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('f1490fec7493ec583f04205226168a56677114bac7b096d8c5cc3ea1a23fcc19')
+sha256sums=('4e1f7a29d97f4ae52acb665137ea91f19eb7f9ecbc75f4c0f8a629881f8682d6')
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"

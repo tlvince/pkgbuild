@@ -1,0 +1,13 @@
+pkgbase = nodejs-semantic-release-cli
+	pkgdesc = setup automated semver compliant package publishing
+	pkgver = 3.6.7
+	pkgrel = 1
+	url = https://github.com/semantic-release/cli
+	arch = any
+	license = MIT
+	depends = npm
+	noextract = semantic-release-cli-3.6.7.tgz
+	source = http://registry.npmjs.org/semantic-release-cli/-/semantic-release-cli-3.6.7.tgz
+	sha256sums = 4e1f7a29d97f4ae52acb665137ea91f19eb7f9ecbc75f4c0f8a629881f8682d6
+
+pkgname = nodejs-semantic-release-cli
