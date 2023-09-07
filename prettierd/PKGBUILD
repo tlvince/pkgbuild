@@ -1,6 +1,6 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=prettierd
-pkgver=0.24.2 # renovate: datasource=github-tags depName=fsouza/prettierd
+pkgver=0.25.0 # renovate: datasource=github-tags depName=fsouza/prettierd
 pkgrel=1
 pkgdesc="prettier, as a daemon, for ludicrous formatting speed."
 url="https://github.com/fsouza/prettierd"
