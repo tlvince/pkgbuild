@@ -1,7 +1,7 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=ruby-semverse
 _gemname=semverse
-pkgver=2.0.0 # renovate: datasource=rubygems depName=semverse
+pkgver=2.0.0
 pkgrel=3
 pkgdesc="An elegant library for representing and comparing SemVer versions and constraints"
 arch=('any')
