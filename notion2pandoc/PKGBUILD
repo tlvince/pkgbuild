@@ -1,6 +1,6 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=notion2pandoc
-pkgver=0.5.1
+pkgver=0.5.1 # renovate: datasource=github-tags depName=ho-oto/notion2pandoc
 pkgrel=1
 pkgdesc="Notion page -> Pandoc AST "
 arch=('x86_64')
