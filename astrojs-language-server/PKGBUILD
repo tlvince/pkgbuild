@@ -1,7 +1,7 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=astrojs-language-server
 _pkgname=${pkgname#astrojs-}
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="The Astro language server, powered by Volar"
 url="https://github.com/withastro/language-tools/tree/main/packages/language-server#readme"
