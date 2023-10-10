@@ -1,11 +1,9 @@
-# Maintainer: XZS <d dot f dot fischer at web dot de>
-# This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
-# You may find it convenient to file issues and pull requests there.
+# Contributor: XZS <d dot f dot fischer at web dot de>
 
-pkgname=gnome-shell-extension-hidetopbar-git
-pkgver=107.r2.g580726b
+pkgname=gnome-shell-extension-hidetopbar-gnome-45-git
+pkgver=114.r2.g07653b2
 pkgrel=1
-pkgdesc="Gnome extension to hide the top bar except in overview mode"
+pkgdesc="Gnome extension to hide the top bar except in overview mode, GNOME 45 support"
 arch=(any)
 url='https://github.com/mlutfy/hidetopbar'
 license=(GPLv2)
