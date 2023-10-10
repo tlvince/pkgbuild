@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('gnome-shell-extension-hidetopbar')
 provides=('gnome-shell-extension-hidetopbar')
 install=gschemas.install
-source=(git+$url)
+source=(git+https://gitlab.gnome.org/ademar111190/hidetopbar.git#commit=07653b2953b2695c2dfce5bad7894e7ac215b6ef)
 sha256sums=('SKIP')
 
 pkgver() {
