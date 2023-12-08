@@ -1,6 +1,6 @@
 _npmname=semantic-release-cli
 pkgname=nodejs-$_npmname
-pkgver=5.4.4 # renovate: datasource=github-tags depName=semantic-release/cli
+pkgver=5.4.5 # renovate: datasource=github-tags depName=semantic-release/cli
 pkgrel=1
 pkgdesc="setup automated semver compliant package publishing"
 arch=(any)
