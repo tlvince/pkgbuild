@@ -26,7 +26,7 @@ jobs:
           echo "PKGVER=$PKGVER" >> "$GITHUB_ENV"
           echo "PKGBUILD_PATH=$PKGBUILD_PATH" >> "$GITHUB_ENV"
       - name: Publish package
-        uses: KSXGitHub/github-actions-deploy-aur@063daf78a56662642bb00049ce78425ff6d0fad7 # v2.7.0
+        uses: KSXGitHub/github-actions-deploy-aur@f253a99125c1ca6bf2451d5a126fe04214d884bd # v2.7.1
         if: ${{ env.PKGBUILD_PATH != '' }}
         with:
           pkgname: ${{ env.PKGNAME }}
