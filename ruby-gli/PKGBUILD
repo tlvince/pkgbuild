@@ -1,7 +1,7 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=ruby-gli
 _gemname=gli
-pkgver=2.21.5 # renovate: datasource=rubygems depName=gli
+pkgver=2.22.0 # renovate: datasource=rubygems depName=gli
 pkgrel=1
 pkgdesc="Make awesome command-line applications the easy way"
 arch=('any')
