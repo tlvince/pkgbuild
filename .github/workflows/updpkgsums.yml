@@ -32,6 +32,6 @@ jobs:
           pkgname: ${{ env.PKGBUILD_DIR }}
       - name: Commit
         if: ${{ env.PKGBUILD_DIR != '' }}
-        uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5.1.0
+        uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c # v7.2.1
         with:
           file_pattern: "*/PKGBUILD */.SRCINFO"
